@@ -31,3 +31,6 @@
 ### 📈 我们相信
 编程不应只是人类对机器的单向命令，而是人机协作的创作过程。  
 **Codura**，让代码会思考、助你专注创造。
+
+---
+![点赞历史](https://api.star-history.com/svg?repos=xunmenglt/codura&type=Date)
