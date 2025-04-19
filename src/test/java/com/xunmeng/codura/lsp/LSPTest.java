@@ -5,6 +5,6 @@ import org.junit.Test;
 public class LSPTest {
     @Test
     public void LspTest(){
-        
+        System.out.println();
     }
 }
