@@ -1,0 +1,187 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 900;
+}
+/* code {
+    white-space: pre-wrap;
+}
+
+pre code {
+    background-color: transparent;
+}  */
+.dark {
+  color: #fff;
+  --bg-code: #4b4b4b;
+  --copy-color: #fff;
+}
+.light {
+  color: #000;
+  --bg-code: #eee;
+  --copy-color: #949494;
+}
+/* pre{
+    background: var(--bg-code);
+    padding: 2px;
+} */
+#codealien-app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--bgcolor, #fff);
+  height: 100vh;
+}
+.container {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.title {
+  font-weight: 900;
+  height: 30px;
+  white-space: nowrap;
+  /* 确保文本在一行内显示 */
+  overflow: hidden;
+  /* 隐藏超出容器的内容 */
+  text-overflow: ellipsis;
+  /* 使用省略号表示被截断的文本 */
+  top: 5px;
+  width: 40%;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 100%;
+  z-index: 2;
+  align-items: center;
+}
+/* .copy-button{
+    color: var(--copy-color);
+    position: absolute;
+    right: 2px;
+    top: 2px;
+    cursor: pointer;
+    height: 10px;
+} */
+.newdiv {
+  color: white;
+  background-color: #2e343e;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.codelanguage {
+  padding-left: 18px;
+  font-size: 14px;
+}
+.copy-button {
+  color: var(--copy-color);
+  margin-right: 20px;
+  cursor: pointer;
+}
+.conversation-container {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.welcome-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.message-item {
+  padding: 5px 0 5px 0;
+}
+.avatar-container {
+  height: 34px;
+  display: flex;
+  align-items: center;
+}
+.avatar-container .avatar img {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+.avatar-container .role-name {
+  font-weight: 600;
+}
+.bottom {
+  height: auto;
+  z-index: 2;
+}
+.right {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+.tool-item {
+  margin-right: 10px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tool-item img {
+  height: 14px;
+  cursor: pointer;
+}
+.tool-item img:hover {
+  height: 16px;
+}
+.tool-contianer {
+  display: flex;
+  justify-content: space-between;
+  height: 30px;
+}
+.user-message {
+  border-bottom: 1px solid #000;
+}
+.sendinput-container {
+  /* height: 90px; */
+  height: auto;
+  display: flex;
+  align-items: flex-end;
+}
+.el-button {
+  height: 33.33px;
+}
+.el-icon- {
+  line-height: 0.7;
+}
+::-webkit-scrollbar {
+  width: 2px;
+  /* 垂直滚动条的宽度 */
+}
+/* 设置滚动条滑块的样式 */
+::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  /* 滑块的背景颜色 */
+  border-radius: 6px;
+  /* 滑块的圆角 */
+}
+::-webkit-scrollbar-button {
+  display: none;
+  /* 隐藏滚动条按钮 */
+}
+::-webkit-scrollbar-corner {
+  background-color: #f4f4f4;
+  /* 角落的背景颜色 */
+}

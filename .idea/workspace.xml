@@ -1,0 +1,625 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="codealien:jar" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="95b7f535-2e0b-4fb5-9209-6900033e9799" name="更改" comment="bug修复">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/xunmeng/codura/io/SSETest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/xunmeng/codura/io/SSETest.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation>
+            <after_sync>
+              <task name="setupDependencies" />
+            </after_sync>
+          </activation>
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Codura" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Codura" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Codura" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="intellij" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="$USER_HOME$/yingyongruangjiakaifa/maven/apache-maven-3.8.8/repository" />
+        <option name="mavenHome" value="$USER_HOME$/yingyongruangjiakaifa/maven/apache-maven-3.8.8" />
+        <option name="userSettingsFile" value="$USER_HOME$/yingyongruangjiakaifa/maven/apache-maven-3.8.8/conf/settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2k2nsp4dcuKZyMXNng6zngzMCvQ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/liuteng/研究生/个人项目/Codura/Codura-Intellij-idea-2022.2-2023.2-dev&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.3954023&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.xunmeng.codura.setting.configurable.CodeChatConfigConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/icons" />
+      <recent name="$PROJECT_DIR$/src/main/resources/META-INF" />
+      <recent name="$PROJECT_DIR$/src/main/resources/codealien/templates" />
+      <recent name="$PROJECT_DIR$/devassist-ui/public" />
+      <recent name="D:\codeproject\extensions\devassist-idea-2022\scripts\docker\mysql\sql" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\codeproject\extensions\devassist-idea-2022\scripts\docker\server\config" />
+      <recent name="D:\codeproject\extensions\devassist-idea-2022\src\main\resources\META-INF" />
+      <recent name="D:\codeproject\extensions\devassist-idea-2022\src\main\resources\codealien\web\src\assets\images" />
+      <recent name="D:\codeproject\extensions\codealien-idea-2022\src\main\resources\codealien" />
+      <recent name="D:\codeproject\extensions\codealien-idea-2022\data\video" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.xunmeng.codealien.system.pojo" />
+      <recent name="com.xunmeng.codealien.net" />
+      <recent name="com.xunmeng.codealien.setting.state" />
+      <recent name="com.xunmeng.codealien.system.logs.pojo" />
+      <recent name="com.xunmeng.codealien.llm.vllm.response" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Gradle.Codura-Intellij-idea-2022.2-2023.2-dev [buildPlugin]">
+    <configuration default="true" type="DjangoTestsConfigurationType">
+      <module name="codealien-idea-2022" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="TARGET" value="" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="codealien-idea-2022" />
+      <working_directory value="$PROJECT_DIR$" />
+      <go_parameters value="-i" />
+      <kind value="FILE" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
+      <module name="codealien-idea-2022" />
+      <working_directory value="$PROJECT_DIR$" />
+      <go_parameters value="-i" />
+      <kind value="DIRECTORY" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="PyBehaveRunConfigurationType" factoryName="Behave">
+      <module name="codealien-idea-2022" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="ADDITIONAL_ARGS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="codealien-idea-2022" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="Python.FlaskServer">
+      <module name="codealien-idea-2022" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="Tox" factoryName="Tox">
+      <module name="codealien-idea-2022" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <method v="2" />
+    </configuration>
+    <configuration name="AESUtils" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.xunmeng.codealien.utils.AESUtils" />
+      <module name="DevAssist.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.xunmeng.codura.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HttpClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.xunmeng.codealien.net.HttpClient" />
+      <module name="DevAssist.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.xunmeng.codura.net.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Codura-Intellij-idea-2022.2-2023.2-dev [buildPlugin]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="buildPlugin" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="Codura-Intellij-idea-2022.2-2023.2-dev [runIde]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="runIde" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="codealien-idea-2022" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="codealien-idea-2022" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.Codura-Intellij-idea-2022.2-2023.2-dev [buildPlugin]" />
+        <item itemvalue="Gradle.Codura-Intellij-idea-2022.2-2023.2-dev [runIde]" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration>$USER_HOME$/.subversion</configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="95b7f535-2e0b-4fb5-9209-6900033e9799" name="更改" comment="" />
+      <created>1722490753269</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1722490753269</updated>
+      <workItem from="1722490754552" duration="126000" />
+      <workItem from="1722490901116" duration="202000" />
+      <workItem from="1722491125599" duration="7686000" />
+      <workItem from="1722499179103" duration="1398000" />
+      <workItem from="1722500633675" duration="704000" />
+      <workItem from="1722501362581" duration="836000" />
+      <workItem from="1722587599044" duration="3373000" />
+      <workItem from="1722819206695" duration="4818000" />
+      <workItem from="1722824610398" duration="4646000" />
+      <workItem from="1722832920363" duration="3154000" />
+      <workItem from="1722838289103" duration="9890000" />
+      <workItem from="1722851041804" duration="240000" />
+      <workItem from="1722851591884" duration="2465000" />
+      <workItem from="1722855376827" duration="2516000" />
+      <workItem from="1722857962778" duration="3046000" />
+      <workItem from="1722866769661" duration="529000" />
+      <workItem from="1722867330067" duration="2374000" />
+      <workItem from="1722903357551" duration="2575000" />
+      <workItem from="1722908818026" duration="20877000" />
+      <workItem from="1722990191516" duration="6636000" />
+      <workItem from="1722999256056" duration="2060000" />
+      <workItem from="1723001357482" duration="16702000" />
+      <workItem from="1723086928412" duration="27325000" />
+      <workItem from="1723129040589" duration="58000" />
+      <workItem from="1723163438925" duration="16062000" />
+      <workItem from="1723421638686" duration="19614000" />
+      <workItem from="1723452666547" duration="879000" />
+      <workItem from="1723453620343" duration="638000" />
+      <workItem from="1723454291048" duration="214000" />
+      <workItem from="1723454525370" duration="11153000" />
+      <workItem from="1723468235317" duration="69000" />
+      <workItem from="1723707888068" duration="386000" />
+      <workItem from="1726821783710" duration="404000" />
+      <workItem from="1726822201435" duration="4986000" />
+      <workItem from="1726836824536" duration="2433000" />
+      <workItem from="1726839296983" duration="19000" />
+      <workItem from="1726839331083" duration="228000" />
+      <workItem from="1726839576936" duration="360000" />
+      <workItem from="1726839952145" duration="1441000" />
+      <workItem from="1726909762940" duration="11000" />
+      <workItem from="1727084993260" duration="90000" />
+      <workItem from="1727085096227" duration="427000" />
+      <workItem from="1727168485174" duration="64000" />
+      <workItem from="1727170833856" duration="203000" />
+      <workItem from="1727171053617" duration="236000" />
+      <workItem from="1727171308256" duration="123000" />
+      <workItem from="1727198203977" duration="1764000" />
+      <workItem from="1727315286392" duration="49000" />
+      <workItem from="1727409668369" duration="659000" />
+      <workItem from="1727418726342" duration="2444000" />
+      <workItem from="1728561679834" duration="2144000" />
+      <workItem from="1728564031936" duration="47000" />
+      <workItem from="1728564098641" duration="327000" />
+      <workItem from="1728564446563" duration="299000" />
+      <workItem from="1728564762105" duration="2311000" />
+      <workItem from="1728610453222" duration="6106000" />
+      <workItem from="1728650940722" duration="53000" />
+      <workItem from="1728730312710" duration="82000" />
+      <workItem from="1728739634195" duration="4856000" />
+      <workItem from="1728984442768" duration="21000" />
+      <workItem from="1729134941490" duration="3778000" />
+      <workItem from="1729401646269" duration="626000" />
+      <workItem from="1729738851253" duration="44000" />
+      <workItem from="1729738917354" duration="1029000" />
+      <workItem from="1729748448660" duration="1517000" />
+      <workItem from="1729750440025" duration="1551000" />
+      <workItem from="1729818490533" duration="24717000" />
+      <workItem from="1730353861992" duration="93000" />
+      <workItem from="1730354927250" duration="15637000" />
+      <workItem from="1730384598365" duration="169000" />
+      <workItem from="1730424786994" duration="22545000" />
+      <workItem from="1730944082276" duration="15958000" />
+      <workItem from="1731030426511" duration="23945000" />
+      <workItem from="1731549547382" duration="2381000" />
+      <workItem from="1731584322021" duration="881000" />
+      <workItem from="1732755310367" duration="23770000" />
+      <workItem from="1732842121734" duration="4135000" />
+      <workItem from="1732882228431" duration="17861000" />
+      <workItem from="1732965542757" duration="2789000" />
+      <workItem from="1733031336744" duration="11460000" />
+      <workItem from="1733113599816" duration="2000" />
+      <workItem from="1733205719566" duration="723000" />
+      <workItem from="1733377874496" duration="598000" />
+      <workItem from="1733450764574" duration="2810000" />
+      <workItem from="1733578212219" duration="8606000" />
+      <workItem from="1734960925632" duration="3886000" />
+      <workItem from="1735008897308" duration="984000" />
+      <workItem from="1735211053782" duration="81000" />
+      <workItem from="1735264708062" duration="2341000" />
+      <workItem from="1735282810812" duration="3611000" />
+      <workItem from="1735974139220" duration="777000" />
+      <workItem from="1736161100557" duration="1026000" />
+      <workItem from="1736165418540" duration="2052000" />
+      <workItem from="1736258317776" duration="1219000" />
+      <workItem from="1736259545978" duration="1858000" />
+      <workItem from="1736658141337" duration="36000" />
+      <workItem from="1736658186008" duration="860000" />
+      <workItem from="1736735460664" duration="95000" />
+      <workItem from="1736925830368" duration="1528000" />
+      <workItem from="1740375649229" duration="16402000" />
+      <workItem from="1744962067998" duration="1631000" />
+      <workItem from="1744973732930" duration="4260000" />
+      <workItem from="1744982034186" duration="4645000" />
+      <workItem from="1745046817614" duration="1521000" />
+      <workItem from="1745049275218" duration="21036000" />
+      <workItem from="1745071635001" duration="727000" />
+      <workItem from="1745072375169" duration="19000" />
+      <workItem from="1745072402702" duration="393000" />
+      <workItem from="1745072804971" duration="747000" />
+      <workItem from="1745075278139" duration="388000" />
+    </task>
+    <task id="LOCAL-00001" summary="侧边栏对话 add">
+      <created>1723193835119</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1723193835119</updated>
+    </task>
+    <task id="LOCAL-00002" summary="bug修复">
+      <created>1723433024421</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1723433024421</updated>
+    </task>
+    <task id="LOCAL-00003" summary="bug修复">
+      <created>1723468153106</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1723468153106</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="侧边栏对话 add" />
+    <MESSAGE value="bug修复" />
+    <option name="LAST_COMMIT_MESSAGE" value="bug修复" />
+  </component>
+  <component name="VgoProject">
+    <settings-migrated>true</settings-migrated>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/system/logs/LogExecutor.java</url>
+          <line>159</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/utils/RSAEncryptionUtil.java</url>
+          <line>75</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/system/logs/LogUtil.java</url>
+          <line>92</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/utils/AESUtil.java</url>
+          <line>59</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/utils/AESUtil.java</url>
+          <line>50</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/setting/configurable/CodeConfigurable.java</url>
+          <line>26</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/setting/configurable/CodeConfigurable.java</url>
+          <line>24</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/toolwin/sharedchat/SharedChatPane.java</url>
+          <line>362</line>
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/toolwin/sharedchat/SharedChatPane.java</url>
+          <line>391</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/toolwin/sharedchat/SharedChatPane.java</url>
+          <line>286</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/toolwin/sharedchat/SharedChatPane.java</url>
+          <line>320</line>
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/toolwin/sharedchat/SharedChatPane.java</url>
+          <line>309</line>
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/exceptions/GlobalExceptionHandler.java</url>
+          <line>8</line>
+          <option name="timeStamp" value="43" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/system/logs/LogExecutor.java</url>
+          <line>170</line>
+          <option name="timeStamp" value="47" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/service/ChatService.java</url>
+          <line>123</line>
+          <option name="timeStamp" value="49" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/service/ChatService.java</url>
+          <line>138</line>
+          <option name="timeStamp" value="50" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/service/ChatService.java</url>
+          <line>159</line>
+          <option name="timeStamp" value="51" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/system/logs/LogExecutor.java</url>
+          <line>180</line>
+          <option name="timeStamp" value="54" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/system/apis/AiUseLogAPI.java</url>
+          <line>21</line>
+          <option name="timeStamp" value="55" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/listeners/ProjectStartListener.java</url>
+          <line>40</line>
+          <option name="timeStamp" value="77" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/service/CodeCompletionService.java</url>
+          <line>317</line>
+          <option name="timeStamp" value="79" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/service/CodeCompletionService.java</url>
+          <line>334</line>
+          <option name="timeStamp" value="81" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/service/CodeCompletionService.java</url>
+          <line>341</line>
+          <option name="timeStamp" value="82" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/toolwin/sharedchat/SharedChatPane.java</url>
+          <line>258</line>
+          <option name="timeStamp" value="92" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/toolwin/sharedchat/SharedChatPane.java</url>
+          <line>378</line>
+          <option name="timeStamp" value="93" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

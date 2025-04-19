@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <style>
+    html,
+    body,
+    #app {
+      height: 100%;
+      margin: 0px;
+      padding: 0px;
+    }
+    body{
+      background-color: #fff;
+      font-family: "Roboto", sans-serif;
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    .chromeframe {
+      margin: 0.2em 0;
+      background: #ccc;
+      color: #000;
+      padding: 0.2em 0;
+    }
+    #loader-wrapper{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+    #loader-wrapper img{
+      width: 50%;
+    }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div id="loader-wrapper">
+        <img src="./loading.gif">
+      </div>
+    </div>
+  </body>
+</html>

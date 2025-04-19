@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xunmeng.system.mapper.SysRoleMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.xunmeng.common.core.pojo.entity.SysRole">
+        <id column="role_name" property="roleName" />
+        <result column="role_zh_name" property="roleZhName" />
+        <result column="remark" property="remark" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        role_name, role_zh_name, remark, create_time, update_time
+    </sql>
+    
+    <sql id="selectRoleVo">
+        select 
+            distinct r.role_name,r.role_zh_name,r.remark,r.create_time,r.update_time
+        from 
+             sys_role r
+        left join sys_user_role ur on ur.role_name =r.role_name
+        left join sys_user u on u.user_name =ur.user_name 
+    </sql>
+
+    
+    <select id="selectRolePermissionByUserName" resultMap="BaseResultMap">
+        <include refid="selectRoleVo" />
+        WHERE ur.user_name= #{userName}
+        order by r.create_time desc
+    </select>
+    
+    <select id="selectRoleList" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from sys_role
+        where 1=1
+        <if test="roleName !=null and roleName!=''">
+            and role_name like concat('%',#{roleName},'%')
+        </if>
+        <if test="roleZhName!=null and roleZhName!=''">
+            and role_zh_name like concat('%',#{roleZhName},'%')
+        </if>
+        <if test="params.beginTime != null and params.beginTime != ''"><!-- 开始时间检索 -->
+            AND date_format(create_time,'%y%m%d') &gt;= date_format(#{params.beginTime},'%y%m%d')
+        </if>
+        <if test="params.endTime != null and params.endTime != ''"><!-- 结束时间检索 -->
+            AND date_format(create_time,'%y%m%d') &lt;= date_format(#{params.endTime},'%y%m%d')
+        </if>
+    </select>
+    
+    <select id="selectRoleByName" resultMap="BaseResultMap">
+        <include refid="selectRoleVo" />
+        where r.role_name=#{roleName}
+    </select>
+    
+    <select id="selectRolesByUserName" resultMap="BaseResultMap">
+        <include refid="selectRoleVo" />
+        where u.user_name=#{userName}
+    </select>
+</mapper>

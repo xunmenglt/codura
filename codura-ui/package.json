@@ -1,0 +1,51 @@
+{
+  "name": "codura-ui",
+  "version": "1.0.0",
+  "description": "Codura-Post-management-platform",
+  "author": "xunmeng",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": {
+    "@mdi/font": "^7.4.47",
+    "@riophae/vue-treeselect": "^0.4.0",
+    "axios": "^1.6.7",
+    "clipboard": "^2.0.11",
+    "core-js": "^3.8.3",
+    "echarts": "^4.9.0",
+    "element-ui": "^2.15.14",
+    "file-saver": "^2.0.5",
+    "highlight": "^0.2.4",
+    "js-cookie": "^3.0.5",
+    "jsencrypt": "^3.3.2",
+    "marked": "^14.1.3",
+    "mavon-editor": "^2.10.4",
+    "node-polyfill-webpack-plugin": "^3.0.0",
+    "nprogress": "^0.2.0",
+    "screenfull": "^6.0.2",
+    "scss": "^0.2.4",
+    "vue": "^2.6.14",
+    "vue-cropper": "^0.6.4",
+    "vue-router": "^3.5.1",
+    "vue-toastification": "^1.7.14",
+    "vue-wordcloud": "^1.1.1",
+    "vuex": "^3.6.2",
+    "yarn": "^1.22.22"
+  },
+  "devDependencies": {
+    "@mdi/js": "^7.4.47",
+    "@vue/cli-plugin-babel": "~5.0.0",
+    "@vue/cli-plugin-router": "~5.0.0",
+    "@vue/cli-plugin-vuex": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
+    "deepmerge": "^4.3.1",
+    "less": "^4.0.0",
+    "less-loader": "^8.0.0",
+    "sass": "~1.32",
+    "sass-loader": "^10.5.2",
+    "svg-sprite-loader": "^6.0.11",
+    "vue-template-compiler": "^2.6.14"
+  }
+}

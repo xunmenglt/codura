@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xunmeng.system.mapper.SysUserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.xunmeng.common.core.pojo.entity.SysUser">
+        <id column="user_name" property="userName" />
+        <result column="nick_name" property="nickName" />
+        <result column="password" property="password" />
+        <result column="avatar" property="avatar" />
+        <result column="email" property="email" />
+        <result column="enabled" property="enabled" />
+        <result column="remark" property="remark" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <collection property="roles" javaType="java.util.List" resultMap="RoleResult" />
+    </resultMap>
+
+    <resultMap id="RoleResult" type="com.xunmeng.common.core.pojo.entity.SysRole">
+        <id column="role_name" property="roleName" />
+        <result column="role_zh_name" property="roleZhName" />
+    </resultMap>
+    
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        user_name, nick_name, password, avatar, email, enabled, remark, create_time, update_time
+    </sql>
+
+    <sql id="selectUserVo">
+        select u.user_name, u.nick_name, u.password, u.avatar, u.email, u.enabled, u.remark, u.create_time, u.update_time,
+             r.role_name,r.role_zh_name
+        from sys_user u
+        left join sys_user_role ur on u.user_name = ur.user_name
+        left join sys_role r on r.role_name = ur.role_name
+    </sql>
+
+    <select id="selectUserList" parameterType="com.xunmeng.common.core.pojo.entity.SysUser" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List" />
+        from sys_user
+        where 1=1 
+        <if test="userName!=null and userName!=''">
+            and user_name like concat('%',#{userName},'%')
+        </if>
+        <if test="nickName!=null and nickName!=''">
+            and nick_name like concat('%',#{nickName},'%')
+        </if>
+        <if test="enabled!=null">
+            and enabled = #{enabled}
+        </if>
+        <if test="params.beginTime != null and params.beginTime != ''"><!-- 开始时间检索 -->
+            AND date_format(create_time,'%y%m%d') &gt;= date_format(#{params.beginTime},'%y%m%d')
+        </if>
+        <if test="params.endTime != null and params.endTime != ''"><!-- 结束时间检索 -->
+            AND date_format(create_time,'%y%m%d') &lt;= date_format(#{params.endTime},'%y%m%d')
+        </if>
+    </select>
+    
+    
+    
+    <select id="selectUserByName" resultMap="BaseResultMap">
+        <include refid="selectUserVo"/>
+        where u.user_name = #{userName}
+    </select>
+
+    <delete id="deleteUserByIds" parameterType="String">
+        delete from sys_user where user_name in
+        <foreach collection="array" item="userName" open="(" separator="," close=")">
+            #{userName}
+        </foreach>
+    </delete>
+</mapper>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xunmeng.system.mapper.SysRoleMenuMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.xunmeng.system.pojo.SysRoleMenu">
+        <id column="id" property="id" />
+        <result column="role_name" property="roleName" />
+        <result column="menu_id" property="menuId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, role_name, menu_id
+    </sql>
+    
+    <insert id="batchRoleMenu">
+        insert into sys_role_menu(role_name,menu_id) values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.roleName},#{item.menuId})
+        </foreach>
+    </insert>
+
+
+    <delete id="deleteRoleMenuByRoleName" parameterType="String">
+        delete from sys_role_menu where role_name=#{roleName}
+    </delete>
+    
+    <delete id="deleteBatchByRoleNames">
+        delete from sys_role_menu where role_name in 
+        <foreach collection="array" index="index" item="roleName" open="(" separator="," close=")">
+            #{roleName}
+        </foreach>
+    </delete>
+
+</mapper>

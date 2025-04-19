@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xunmeng.system.mapper.UserUseInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.xunmeng.system.pojo.UserUseInfo">
+        <id column="id" property="id" />
+        <result column="user_id" property="userId" />
+        <result column="code_completion_chars" property="codeCompletionChars" />
+        <result column="code_completion_tokens" property="codeCompletionTokens" />
+        <result column="code_completion_qa_times" property="codeCompletionQaTimes" />
+        <result column="code_completion_qa_chars" property="codeCompletionQaChars" />
+        <result column="code_completion_qa_tokens" property="codeCompletionQaTokens" />
+        <result column="test_case_writing_chars" property="testCaseWritingChars" />
+        <result column="test_case_writing_tokens" property="testCaseWritingTokens" />
+        <result column="variable_type_declaration_chars" property="variableTypeDeclarationChars" />
+        <result column="variable_type_declaration_tokens" property="variableTypeDeclarationTokens" />
+        <result column="code_explanation_chars" property="codeExplanationChars" />
+        <result column="code_explanation_tokens" property="codeExplanationTokens" />
+        <result column="dcoumention_writing_chars" property="dcoumentionWritingChars" />
+        <result column="dcoumention_writing_tokens" property="dcoumentionWritingTokens" />
+        <result column="code_refactoring_chars" property="codeRefactoringChars" />
+        <result column="code_refactoring_tokens" property="codeRefactoringTokens" />
+        <result column="qucik_code_insertion_chars" property="qucikCodeInsertionChars" />
+        <result column="qucik_code_insertion_tokens" property="qucikCodeInsertionTokens" />
+        <result column="editor_usage_time" property="editorUsageTime" />
+        <result column="editor_active_time" property="editorActiveTime" />
+        <result column="added_code_lines" property="addedCodeLines" />
+        <result column="deleted_code_lines" property="deletedCodeLines" />
+        <result column="total_keyboard_inputs" property="totalKeyboardInputs" />
+        <result column="ctrl_c_count" property="ctrlCCount" />
+        <result column="ctrl_v_count" property="ctrlVCount" />
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="ActiveUserLeaderboardResultMap" type="com.xunmeng.system.pojo.UserUseInfo">
+        <result column="user_id" property="userId" />
+        <result column="nick_name" property="nickName" />
+        <result column="code_completion_chars" property="codeCompletionChars" />
+        <result column="code_completion_tokens" property="codeCompletionTokens" />
+        <result column="code_completion_qa_times" property="codeCompletionQaTimes" />
+        <result column="code_completion_qa_chars" property="codeCompletionQaChars" />
+        <result column="code_completion_qa_tokens" property="codeCompletionQaTokens" />
+        <result column="test_case_writing_chars" property="testCaseWritingChars" />
+        <result column="test_case_writing_tokens" property="testCaseWritingTokens" />
+        <result column="variable_type_declaration_chars" property="variableTypeDeclarationChars" />
+        <result column="variable_type_declaration_tokens" property="variableTypeDeclarationTokens" />
+        <result column="code_explanation_chars" property="codeExplanationChars" />
+        <result column="code_explanation_tokens" property="codeExplanationTokens" />
+        <result column="dcoumention_writing_chars" property="dcoumentionWritingChars" />
+        <result column="dcoumention_writing_tokens" property="dcoumentionWritingTokens" />
+        <result column="code_refactoring_chars" property="codeRefactoringChars" />
+        <result column="code_refactoring_tokens" property="codeRefactoringTokens" />
+        <result column="qucik_code_insertion_chars" property="qucikCodeInsertionChars" />
+        <result column="qucik_code_insertion_tokens" property="qucikCodeInsertionTokens" />
+        <result column="editor_usage_time" property="editorUsageTime" />
+        <result column="editor_active_time" property="editorActiveTime" />
+        <result column="added_code_lines" property="addedCodeLines" />
+        <result column="deleted_code_lines" property="deletedCodeLines" />
+        <result column="total_keyboard_inputs" property="totalKeyboardInputs" />
+        <result column="ctrl_c_count" property="ctrlCCount" />
+        <result column="ctrl_v_count" property="ctrlVCount" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, user_id, code_completion_chars, code_completion_tokens, code_completion_qa_times, code_completion_qa_chars, code_completion_qa_tokens, test_case_writing_chars, test_case_writing_tokens, variable_type_declaration_chars, variable_type_declaration_tokens, code_explanation_chars, code_explanation_tokens, dcoumention_writing_chars, dcoumention_writing_tokens, code_refactoring_chars, code_refactoring_tokens, qucik_code_insertion_chars, qucik_code_insertion_tokens,editor_usage_time, editor_active_time, added_code_lines, deleted_code_lines, total_keyboard_inputs, ctrl_c_count, ctrl_v_count, ai_usage_count,create_time,update_time
+    </sql>
+
+    <!-- 统计各字段总和 -->
+    <select id="selectUserUseInfoSum" resultMap="BaseResultMap">
+        SELECT
+            NULL AS id,
+            NULL AS user_id,
+            SUM(code_completion_chars) AS code_completion_chars,
+            SUM(code_completion_tokens) AS code_completion_tokens,
+            SUM(code_completion_qa_times) AS code_completion_qa_times,
+            SUM(code_completion_qa_chars) AS code_completion_qa_chars,
+            SUM(code_completion_qa_tokens) AS code_completion_qa_tokens,
+            SUM(test_case_writing_chars) AS test_case_writing_chars,
+            SUM(test_case_writing_tokens) AS test_case_writing_tokens,
+            SUM(variable_type_declaration_chars) AS variable_type_declaration_chars,
+            SUM(variable_type_declaration_tokens) AS variable_type_declaration_tokens,
+            SUM(code_explanation_chars) AS code_explanation_chars,
+            SUM(code_explanation_tokens) AS code_explanation_tokens,
+            SUM(dcoumention_writing_chars) AS dcoumention_writing_chars,
+            SUM(dcoumention_writing_tokens) AS dcoumention_writing_tokens,
+            SUM(code_refactoring_chars) AS code_refactoring_chars,
+            SUM(code_refactoring_tokens) AS code_refactoring_tokens,
+            SUM(qucik_code_insertion_chars) AS qucik_code_insertion_chars,
+            SUM(qucik_code_insertion_tokens) AS qucik_code_insertion_tokens,
+            SUM(editor_usage_time) AS editor_usage_time,
+            SUM(editor_active_time) AS editor_active_time,
+            SUM(added_code_lines) AS added_code_lines,
+            SUM(deleted_code_lines) AS deleted_code_lines,
+            SUM(total_keyboard_inputs) AS total_keyboard_inputs,
+            SUM(ctrl_c_count) AS ctrl_c_count,
+            SUM(ctrl_v_count) AS ctrl_v_count,
+        FROM user_use_info
+    </select>
+    
+    <select id="selectUserUseInfoByIdSum" resultMap="BaseResultMap" parameterType="String">
+        SELECT
+            NULL AS id,
+            user_id,
+            SUM(code_completion_chars) AS code_completion_chars,
+            SUM(code_completion_tokens) AS code_completion_tokens,
+            SUM(code_completion_qa_times) AS code_completion_qa_times,
+            SUM(code_completion_qa_chars) AS code_completion_qa_chars,
+            SUM(code_completion_qa_tokens) AS code_completion_qa_tokens,
+            SUM(test_case_writing_chars) AS test_case_writing_chars,
+            SUM(test_case_writing_tokens) AS test_case_writing_tokens,
+            SUM(variable_type_declaration_chars) AS variable_type_declaration_chars,
+            SUM(variable_type_declaration_tokens) AS variable_type_declaration_tokens,
+            SUM(code_explanation_chars) AS code_explanation_chars,
+            SUM(code_explanation_tokens) AS code_explanation_tokens,
+            SUM(dcoumention_writing_chars) AS dcoumention_writing_chars,
+            SUM(dcoumention_writing_tokens) AS dcoumention_writing_tokens,
+            SUM(code_refactoring_chars) AS code_refactoring_chars,
+            SUM(code_refactoring_tokens) AS code_refactoring_tokens,
+            SUM(qucik_code_insertion_chars) AS qucik_code_insertion_chars,
+            SUM(qucik_code_insertion_tokens) AS qucik_code_insertion_tokens,
+            SUM(editor_usage_time) AS editor_usage_time,
+            SUM(editor_active_time) AS editor_active_time,
+            SUM(added_code_lines) AS added_code_lines,
+            SUM(deleted_code_lines) AS deleted_code_lines,
+            SUM(total_keyboard_inputs) AS total_keyboard_inputs,
+            SUM(ctrl_c_count) AS ctrl_c_count,
+            SUM(ctrl_v_count) AS ctrl_v_count
+        FROM user_use_info
+        WHERE user_id = #{userId}
+    </select>
+    
+    <select id="selectTotalProgrammerCount" resultType="int">
+        SELECT COUNT(*)
+        FROM `sys_user`
+                 LEFT JOIN `sys_user_role` ON sys_user.user_name=sys_user_role.user_name
+                 LEFT JOIN `sys_role` ON sys_user_role.role_name=sys_role.role_name
+        WHERE sys_role.role_name='programmer'
+    </select>
+    <select id="selectTotalAiUseTimes" resultType="int">
+        SELECT SUM(`code_completion_qa_times`)
+        FROM `user_use_info`
+    </select>
+    
+    <select id="selectTotalCodeHelpCount" resultType="int">
+        SELECT
+            SUM(code_completion_tokens)+
+            SUM(code_completion_qa_tokens)+ 
+            SUM(test_case_writing_tokens) +
+            SUM(variable_type_declaration_tokens) +
+            SUM(code_explanation_tokens) +
+            SUM(dcoumention_writing_tokens) +
+            SUM(code_refactoring_tokens) +
+            SUM(qucik_code_insertion_tokens) as total
+        FROM user_use_info
+    </select>
+    
+    <select id="selectTotalPlugInUseTime">
+        SELECT
+            SUM(editor_usage_time)
+        FROM user_use_info
+    </select>
+    
+    <select id="selectTotalPlugInActivateUseTime">
+        SELECT
+            SUM(editor_active_time)
+        FROM user_use_info
+    </select>
+    
+    
+    <select id="selectDayUsePlugInStatusInMonth" resultMap="BaseResultMap">
+        SELECT
+            NULL as id,
+            NULL as user_id,
+            SUM(code_completion_chars) AS code_completion_chars,
+            SUM(code_completion_tokens) AS code_completion_tokens,
+            SUM(code_completion_qa_times) AS code_completion_qa_times,
+            SUM(code_completion_qa_chars) AS code_completion_qa_chars,
+            SUM(code_completion_qa_tokens) AS code_completion_qa_tokens,
+            SUM(test_case_writing_chars) AS test_case_writing_chars,
+            SUM(test_case_writing_tokens) AS test_case_writing_tokens,
+            SUM(variable_type_declaration_chars) AS variable_type_declaration_chars,
+            SUM(variable_type_declaration_tokens) AS variable_type_declaration_tokens,
+            SUM(code_explanation_chars) AS code_explanation_chars,
+            SUM(code_explanation_tokens) AS code_explanation_tokens,
+            SUM(dcoumention_writing_chars) AS dcoumention_writing_chars,
+            SUM(dcoumention_writing_tokens) AS dcoumention_writing_tokens,
+            SUM(code_refactoring_chars) AS code_refactoring_chars,
+            SUM(code_refactoring_tokens) AS code_refactoring_tokens,
+            SUM(qucik_code_insertion_chars) AS qucik_code_insertion_chars,
+            SUM(qucik_code_insertion_tokens) AS qucik_code_insertion_tokens,
+            SUM(editor_usage_time) AS editor_usage_time,
+            SUM(editor_active_time) AS editor_active_time,
+            SUM(added_code_lines) AS added_code_lines,
+            SUM(deleted_code_lines) AS deleted_code_lines,
+            SUM(total_keyboard_inputs) AS total_keyboard_inputs,
+            SUM(ctrl_c_count) AS ctrl_c_count,
+            SUM(ctrl_v_count) AS ctrl_v_count,
+            DATE(create_time) AS create_time,
+            DATE(create_time) AS update_time
+        FROM user_use_info
+        WHERE create_time>= DATE_SUB(CURDATE(), INTERVAL DAY(CURDATE())-1 DAY)
+        GROUP BY DATE(create_time)
+    </select>
+    
+    <select id="selectPlugInUsagePercentage" resultMap="BaseResultMap">
+        SELECT
+            SUM(code_completion_chars) AS code_completion_chars,
+            SUM(code_completion_tokens) AS code_completion_tokens,
+            SUM(code_completion_qa_times) AS code_completion_qa_times,
+            SUM(code_completion_qa_chars) AS code_completion_qa_chars,
+            SUM(code_completion_qa_tokens) AS code_completion_qa_tokens,
+            SUM(test_case_writing_chars) AS test_case_writing_chars,
+            SUM(test_case_writing_tokens) AS test_case_writing_tokens,
+            SUM(variable_type_declaration_chars) AS variable_type_declaration_chars,
+            SUM(variable_type_declaration_tokens) AS variable_type_declaration_tokens,
+            SUM(code_explanation_chars) AS code_explanation_chars,
+            SUM(code_explanation_tokens) AS code_explanation_tokens,
+            SUM(dcoumention_writing_chars) AS dcoumention_writing_chars,
+            SUM(dcoumention_writing_tokens) AS dcoumention_writing_tokens,
+            SUM(code_refactoring_chars) AS code_refactoring_chars,
+            SUM(code_refactoring_tokens) AS code_refactoring_tokens,
+            SUM(qucik_code_insertion_chars) AS qucik_code_insertion_chars,
+            SUM(qucik_code_insertion_tokens) AS qucik_code_insertion_tokens,
+            SUM(editor_usage_time) AS editor_usage_time,
+            SUM(editor_active_time) AS editor_active_time,
+            SUM(added_code_lines) AS added_code_lines,
+            SUM(deleted_code_lines) AS deleted_code_lines,
+            SUM(total_keyboard_inputs) AS total_keyboard_inputs,
+            SUM(ctrl_c_count) AS ctrl_c_count,
+            SUM(ctrl_v_count) AS ctrl_v_count
+        FROM user_use_info
+    </select>
+    
+    <select id="selectActiveUserLeaderboard" resultMap="ActiveUserLeaderboardResultMap">
+        SELECT
+            user_id,
+            nick_name,
+            SUM(code_completion_chars) AS code_completion_chars,
+            SUM(code_completion_tokens) AS code_completion_tokens,
+            SUM(code_completion_qa_times) AS code_completion_qa_times,
+            SUM(code_completion_qa_chars) AS code_completion_qa_chars,
+            SUM(code_completion_qa_tokens) AS code_completion_qa_tokens,
+            SUM(test_case_writing_chars) AS test_case_writing_chars,
+            SUM(test_case_writing_tokens) AS test_case_writing_tokens,
+            SUM(variable_type_declaration_chars) AS variable_type_declaration_chars,
+            SUM(variable_type_declaration_tokens) AS variable_type_declaration_tokens,
+            SUM(code_explanation_chars) AS code_explanation_chars,
+            SUM(code_explanation_tokens) AS code_explanation_tokens,
+            SUM(dcoumention_writing_chars) AS dcoumention_writing_chars,
+            SUM(dcoumention_writing_tokens) AS dcoumention_writing_tokens,
+            SUM(code_refactoring_chars) AS code_refactoring_chars,
+            SUM(code_refactoring_tokens) AS code_refactoring_tokens,
+            SUM(qucik_code_insertion_chars) AS qucik_code_insertion_chars,
+            SUM(qucik_code_insertion_tokens) AS qucik_code_insertion_tokens,
+            SUM(editor_usage_time) AS editor_usage_time,
+            SUM(editor_active_time) AS editor_active_time,
+            SUM(added_code_lines) AS added_code_lines,
+            SUM(deleted_code_lines) AS deleted_code_lines,
+            SUM(total_keyboard_inputs) AS total_keyboard_inputs,
+            SUM(ctrl_c_count) AS ctrl_c_count,
+            SUM(ctrl_v_count) AS ctrl_v_count
+        FROM user_use_info AS uui
+                 LEFT JOIN `sys_user` AS u
+                           ON uui.user_id=u.user_name
+        where 1=1
+        <if test="startTime!=null and startTime!=''">
+            and uui.create_time &gt;= #{startTime}
+        </if>
+        <if test="endTime!=null and endTime!=''">
+            and uui.create_time &lt;= #{endTime}
+        </if>
+        GROUP BY uui.user_id
+        
+    </select>
+</mapper>

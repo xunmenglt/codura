@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xunmeng.system.mapper.SysNoticeMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.xunmeng.system.pojo.SysNotice">
+        <id column="notice_id" property="noticeId" />
+        <result column="notice_title" property="noticeTitle" />
+        <result column="notice_type" property="noticeType" />
+        <result column="notice_content" property="noticeContent" />
+        <result column="status" property="status" />
+        <result column="create_by" property="createBy" />
+        <result column="create_time" property="createTime" />
+        <result column="update_by" property="updateBy" />
+        <result column="update_time" property="updateTime" />
+        <result column="remark" property="remark" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        notice_id, notice_title, notice_type, notice_content, status, create_by, create_time, update_by, update_time, remark
+    </sql>
+    
+    <select id="selectNoticeList" resultMap="BaseResultMap">
+        select 
+        <include refid="Base_Column_List" />
+        from sys_notice
+        <where>
+            <if test="noticeTitle!=null and noticeTitle!=''">
+                and notice_title like concat('%',#{noticeTitle},'%')
+            </if>
+            <if test="noticeType!=null">
+                and notice_type = #{noticeType}
+            </if>
+            <if test="createBy!=null and createBy!=''">
+                and create_by like concat('%',#{createBy},'%')
+            </if>
+            <if test="params.beginTime != null and params.beginTime != ''"><!-- 开始时间检索 -->
+                AND date_format(create_time,'%y%m%d') &gt;= date_format(#{params.beginTime},'%y%m%d')
+            </if>
+            <if test="params.endTime != null and params.endTime != ''"><!-- 结束时间检索 -->
+                AND date_format(create_time,'%y%m%d') &lt;= date_format(#{params.endTime},'%y%m%d')
+            </if>
+        </where>
+    </select>
+    
+    <delete id="deleteNoticeByIds">
+        delete from sys_notice where notice_id in
+        <foreach collection="array" item="noticeId" index="index" open="(" separator="," close=")">
+            #{noticeId}
+        </foreach>
+    </delete>
+
+</mapper>

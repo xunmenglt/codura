@@ -1,0 +1,64 @@
+version: '3.3'
+services:
+  codura-server:
+    image: codura-server:1.0
+    container_name: codura-server
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    networks:
+      - codura
+    volumes:
+      - ./server/config:/var/config
+      - ./server/data:/var/data
+    depends_on:
+      - codura-mysql
+      - codura-redis
+  
+  codura-ui:
+    image: codura-ui:1.0
+    container_name: codura-ui
+    build:
+      context: ./ui
+      dockerfile: Dockerfile
+    networks:
+      - codura
+    ports:
+      - 8000:80
+    environment:
+      VUE_APP_BASE_API: http://codura-server:8080
+    volumes:
+      - ./ui/nginx/conf.d:/etc/nginx/conf.d
+    depends_on:
+      - codura-server
+  
+  codura-mysql:
+    image: mysql:8.0.28
+    container_name: codura-mysql
+    networks:
+      - codura
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      # 默认root密码，仅首次运行有效
+      MYSQL_ROOT_PASSWORD: codura
+      MYSQL_USER: codura  # 创建一个用户
+      MYSQL_PASSWORD: codura  # 设置该用户的密码
+    volumes:
+      - ./mysql/sql:/docker-entrypoint-initdb.d # 映射脚本日志目录，宿主机:容器
+      - ./mysql/log:/var/log/mysql # 映射日志目录，宿主机:容器
+      - ./mysql/data:/var/lib/mysql # 映射数据目录，宿主机:容器
+      - ./mysql/conf.d:/etc/mysql/conf.d # 映射配置目录，宿主机:容器
+      - /etc/localtime:/etc/localtime:ro # 让容器的时钟与宿主机时钟同步，避免时间的问题，ro是read only的意思，就是只读。
+  codura-redis:
+    image: anolis-registry.cn-zhangjiakou.cr.aliyuncs.com/openanolis/redis:5.0.3-8.6
+    container_name: codura-redis
+    environment:
+      - TZ=Asia/Shanghai
+    networks:
+      - codura
+    volumes:
+      - ./redis/config:/opt/config # 映射配置目录，宿主机:容器
+      - ./redis/data:/data # 映射数据目录，宿主机:容器
+    command: ["redis-server", "/opt/config/redis.conf"]
+networks:
+  codura:

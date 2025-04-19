@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xunmeng.system.mapper.SysUserRoleMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.xunmeng.system.pojo.SysUserRole">
+        <id column="id" property="id" />
+        <result column="user_name" property="userName" />
+        <result column="role_name" property="roleName" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, user_name, role_name
+    </sql>
+
+    <insert id="batchUserRole">
+        insert into sys_user_role(user_name, role_name) values
+        <foreach item="item" index="index" collection="list" separator=",">
+            (#{item.userName},#{item.roleName})
+        </foreach>
+    </insert>
+
+    <delete id="deleteUserRole" parameterType="String">
+        delete from sys_user_role where user_name in
+        <foreach collection="array" item="userName" open="(" separator="," close=")">
+            #{userName}
+        </foreach>
+    </delete>
+</mapper>

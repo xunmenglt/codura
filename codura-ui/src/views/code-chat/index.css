@@ -1,0 +1,42 @@
+* {
+    padding: 0;
+    margin: 0;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 900;
+  }
+  .dark {
+    color: #fff;
+    --bg-code: #4b4b4b;
+    --copy-color: #fff;
+  }
+  .light {
+    color: #000;
+    --bg-code: #eee;
+    --copy-color: #949494;
+  }
+  /* pre{
+      background: var(--bg-code);
+      padding: 2px;
+  } */
+  #codealien-app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--bgcolor, #fff);
+    height: 100vh;
+  }
+  .container {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }

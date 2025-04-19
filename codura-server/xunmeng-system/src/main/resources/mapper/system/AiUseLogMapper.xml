@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xunmeng.system.mapper.AiUseLogMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.xunmeng.system.pojo.AiUseLog">
+        <id column="id" property="id" />
+        <result column="type" property="type" />
+        <result column="timestamp" property="timestamp" />
+        <result column="user_id" property="userId" />
+        <result column="ip_address" property="ipAddress" />
+        <result column="mac_address" property="macAddress" />
+        <result column="ide_version" property="ideVersion" />
+        <result column="value" property="value" />
+        <result column="event_type" property="eventType" />
+        <result column="input_content" property="inputContent" />
+        <result column="output_content" property="outputContent" />
+        <result column="input_len" property="inputLen" />
+        <result column="output_len" property="outputLen" />
+        <result column="input_tokens" property="inputTokens" />
+        <result column="output_tokens" property="outputTokens" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, type, timestamp, user_id, ip_address, mac_address, ide_version, value, event_type, input_content, output_content, input_len, output_len,input_tokens,output_tokens, create_time, update_time
+    </sql>
+
+</mapper>

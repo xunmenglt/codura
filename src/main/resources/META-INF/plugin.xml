@@ -1,0 +1,129 @@
+<idea-plugin>
+    <id>com.xunmeng.codura</id>
+
+    <name>Codura</name>
+
+    <vendor email="xmliuteng@163.com" url="https://www.yourcompany.com"></vendor>
+    
+    <description><![CDATA[
+     This sample plugin illustrates how to create your custom tool window.<br>
+      See the
+      <a href="https://plugins.jetbrains.com/docs/intellij/tool-windows.html">Tool Windows</a>
+      for more information.
+  ]]></description>
+
+    <change-notes>
+        <![CDATA[
+      <ul>
+        <li><b>2.0.0</b> Convert to Gradle-based plugin.</li>
+        <li><b>1.0.0</b> Release 2018.3 and earlier.</li>
+      </ul>
+    ]]>
+    </change-notes>
+    
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.java</depends>
+
+    <resource-bundle>codura.messages.CodeBundle</resource-bundle>
+    
+    <extensions defaultExtensionNs="com.intellij">
+        <!--全局异常处理-->
+        <!-- 插件的应用程序组件 -->
+        <notificationGroup id="codura" displayType="BALLOON"/>
+        <toolWindow factoryClass="com.xunmeng.codura.toolwin.CodeToolWindowFactory"
+                    id="Codura"
+                    icon="com.xunmeng.codura.constants.CodeIcons.TOOL_LOGO"
+                    anchor="right" 
+                    secondary="false"/>
+<!--        <toolWindow factoryClass="com.xunmeng.codura.toolwin.CodeToolWindowFactory"-->
+<!--                    id="DevAssist"-->
+<!--                    anchor="right"-->
+<!--                    secondary="false"/>-->
+        <!--注册状态栏构建工程-->
+        <statusBarWidgetFactory id="CodeAssistant"
+                                implementation="com.xunmeng.codura.statusBar.CodeStatusBarWidgetFactory"/>
+        <!--注册持久状态-->
+        <applicationService serviceImplementation="com.xunmeng.codura.setting.state.CodeStateService" />
+        <applicationService serviceImplementation="com.xunmeng.codura.setting.state.SystemInfoStateService" />
+        <applicationService serviceImplementation="com.xunmeng.codura.setting.state.TimerMasterStateService" />
+        <editorFactoryDocumentListener implementation="com.xunmeng.codura.listeners.DocumentListener"/>
+        <!--注册Configurable-->
+        <applicationConfigurable parentId="tools"
+                                 instance="com.xunmeng.codura.setting.configurable.CodeConfigurable"
+                                 id="com.xunmeng.codura.setting.configurable.CodeConfigurable"
+                                 displayName="Codura Config"/>
+        <applicationConfigurable parentId="com.xunmeng.codura.setting.configurable.CodeConfigurable"
+                                 instance="com.xunmeng.codura.setting.configurable.CodeModelProiderConfigurable"
+                                 id="com.xunmeng.codura.setting.configurable.CodeModelProiderConfigurable"
+                                 displayName="Model Privider"/>
+        <applicationConfigurable parentId="com.xunmeng.codura.setting.configurable.CodeConfigurable"
+                                 instance="com.xunmeng.codura.setting.configurable.CodeCompletionConfigConfigurable"
+                                 id="com.xunmeng.codura.setting.configurable.CodeCompletionConfigConfigurable"
+                                 displayName="Fim Config"/>
+        <applicationConfigurable parentId="com.xunmeng.codura.setting.configurable.CodeConfigurable"
+                                 instance="com.xunmeng.codura.setting.configurable.CodeChatConfigConfigurable"
+                                 id="com.xunmeng.codura.setting.configurable.CodeChatConfigConfigurable"
+                                 displayName="Chat Config"/>
+        <actionPromoter implementation="com.xunmeng.codura.actions.completion.promoter.AcceptActionsPromoter"/>
+        <actionPromoter implementation="com.xunmeng.codura.actions.completion.promoter.ForceCompletionActionPromoter"/>
+        <actionPromoter implementation="com.xunmeng.codura.actions.completion.promoter.CancelActionsPromoter"/>
+
+        <postStartupActivity implementation="com.xunmeng.codura.listeners.ProjectStartListener"/>
+        <editorFactoryListener implementation="com.xunmeng.codura.listeners.EditorListener"/>
+        <copyPastePreProcessor implementation="com.xunmeng.codura.listeners.CopyPasteListener"/>
+            
+    </extensions>
+
+    <!-- 插件的应用程序组件 -->
+    <application-components>
+        <component>
+            <implementation-class>com.xunmeng.codura.Initializer</implementation-class>
+        </component>
+    </application-components>
+    
+    <actions>
+        
+        <action id="ForceCompletionAction"
+                class="com.xunmeng.codura.actions.completion.ForceCompletionAction">
+            <keyboard-shortcut first-keystroke="alt SLASH" keymap="$default"/>
+        </action>
+        <action id="TabPressedAction" class="com.xunmeng.codura.actions.completion.TabPressedAction">
+            <keyboard-shortcut first-keystroke="TAB" keymap="$default"/>
+        </action>
+        <action id="CancelPressedAction" class="com.xunmeng.codura.actions.completion.CancelPressedAction">
+            <keyboard-shortcut first-keystroke="ESCAPE" keymap="$default"/>
+        </action>
+        <group id="codealien.statusBarPopup">
+            <!--向statusBarWidget中添加action-->
+            <reference id="ForceCompletionAction" />
+            <reference id="TabPressedAction" />
+        </group>
+
+        <action id="CodeAddTestsAction"
+                class="com.xunmeng.codura.actions.editormenu.CodeAddTestsAction">
+        </action>
+        <action id="CodeAddTypesAction"
+                class="com.xunmeng.codura.actions.editormenu.CodeAddTypesAction">
+        </action>
+        <action id="CodeExplainAction"
+                class="com.xunmeng.codura.actions.editormenu.CodeExplainAction">
+        </action>
+        <action id="CodeGenerateDocsAction"
+                class="com.xunmeng.codura.actions.editormenu.CodeGenerateDocsAction">
+        </action>
+        <action id="CodeRefactorAction"
+                class="com.xunmeng.codura.actions.editormenu.CodeRefactorAction">
+        </action>
+        <!--操作组，用于规划操作所放置的地方，包括代码解释、代码重构、测试用例构建、说明文档构建-->
+        <group id="codealien.editorPopupMenu.actions">
+            <add-to-group group-id="EditorPopupMenu" anchor="first"/>
+            <reference id="CodeAddTestsAction"/>
+            <reference id="CodeAddTypesAction"/>
+            <reference id="CodeExplainAction"/>
+            <reference id="CodeGenerateDocsAction"/>
+            <reference id="CodeRefactorAction"/>
+        </group>
+    </actions>
+    
+    
+</idea-plugin>

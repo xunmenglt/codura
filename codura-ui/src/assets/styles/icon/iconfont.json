@@ -1,0 +1,79 @@
+{
+  "id": "4519369",
+  "name": "LLaMA问答平台",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "16323142",
+      "name": "机器人",
+      "font_class": "jiqiren",
+      "unicode": "e70e",
+      "unicode_decimal": 59150
+    },
+    {
+      "icon_id": "31426165",
+      "name": "文章数",
+      "font_class": "wenzhangshu",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "1312062",
+      "name": "信封",
+      "font_class": "xinfeng",
+      "unicode": "e61b",
+      "unicode_decimal": 58907
+    },
+    {
+      "icon_id": "3584533",
+      "name": "文章列表",
+      "font_class": "wenzhangliebiao",
+      "unicode": "e620",
+      "unicode_decimal": 58912
+    },
+    {
+      "icon_id": "4766954",
+      "name": "star",
+      "font_class": "star",
+      "unicode": "e7df",
+      "unicode_decimal": 59359
+    },
+    {
+      "icon_id": "4936673",
+      "name": "star-fill",
+      "font_class": "star-fill",
+      "unicode": "e86a",
+      "unicode_decimal": 59498
+    },
+    {
+      "icon_id": "15490494",
+      "name": "阅读数量",
+      "font_class": "yuedushuliang",
+      "unicode": "e643",
+      "unicode_decimal": 58947
+    },
+    {
+      "icon_id": "2302720",
+      "name": "评论次数",
+      "font_class": "pingluncishu",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "11372651",
+      "name": "点赞",
+      "font_class": "dianzan",
+      "unicode": "e8ad",
+      "unicode_decimal": 59565
+    },
+    {
+      "icon_id": "11372758",
+      "name": "点赞",
+      "font_class": "dianzan1",
+      "unicode": "e8c3",
+      "unicode_decimal": 59587
+    }
+  ]
+}
