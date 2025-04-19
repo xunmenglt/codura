@@ -94,8 +94,7 @@ public class SSETest {
                 .setPath("/v1/completions")
                 .setMethod(Method.POST)
                 .addHeader("Content-Type","application/json")
-                .addHeader("Authorization","Bearer sk-nzow4TIOo6wZv2hQBf903e1e7eDb496b832cCa242fD58f81");
-//        sk-None-MqI5fNZjBHfqfisFYPZLT3BlbkFJSIiLlYevONKQnCFs8wNy
+                .addHeader("Authorization","Bearer xxx");
         StreamResquest streamResquest = new StreamResquest(body,options,new ResponseCallable() {
             @Override
             public <Call> void onStart(Call item) {
