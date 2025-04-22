@@ -5,7 +5,7 @@ FROM node:18.19 AS build-stage
 WORKDIR /var/src/app
 
 # 复制项目文件到工作目录
-COPY ./devassist-ui ./
+COPY ./codura-ui ./
 
 # 接收环境变量
 ARG VUE_APP_BASE_API

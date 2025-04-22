@@ -1,1 +1,1 @@
-docker exec -i devassist-mysql mysql -h127.0.0.1 -uroot -pdevassist devassist < /docker-entrypoint-initdb.d/init.sql
+docker exec -i codura-mysql mysql -h127.0.0.1 -uroot -pcodura codura < /docker-entrypoint-initdb.d/init.sql

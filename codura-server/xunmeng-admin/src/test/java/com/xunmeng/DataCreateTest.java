@@ -49,7 +49,7 @@ public class DataCreateTest {
         return result;
     }
     
-    @Test
+//    @Test
     public void run(){
         List<List<String>> randomUser = createRandomUser(30);
         List<String> englishNames=randomUser.get(0);

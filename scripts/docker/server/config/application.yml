@@ -81,13 +81,13 @@ spring:
   # redis 配置
   redis:
     # 地址
-    host: devassist-redis
+    host: codura-redis
     # 端口，默认为6379
     port: 6379
     # 数据库索引
     database: 0
     # 密码
-    password: devassist
+    password: codura
     # 连接超时时间
     timeout: 10s
     lettuce:

@@ -10,37 +10,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="95b7f535-2e0b-4fb5-9209-6900033e9799" name="更改" comment="bug修复">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/xunmeng/codura/MyStartupActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/codura-ui/src/assets/images/tutorial/3.1.png" beforeDir="false" afterPath="$PROJECT_DIR$/codura-ui/src/assets/images/tutorial/3.1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/codura-ui/src/assets/images/tutorial/3.2.png" beforeDir="false" afterPath="$PROJECT_DIR$/codura-ui/src/assets/images/tutorial/3.2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/codura-ui/src/assets/images/tutorial/3.4.png" beforeDir="false" afterPath="$PROJECT_DIR$/codura-ui/src/assets/images/tutorial/3.4.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/codura-ui/src/assets/images/tutorial/4.1.png" beforeDir="false" afterPath="$PROJECT_DIR$/codura-ui/src/assets/images/tutorial/4.1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/codura-ui/src/assets/images/tutorial/4.10.png" beforeDir="false" afterPath="$PROJECT_DIR$/codura-ui/src/assets/images/tutorial/4.10.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/codura-ui/src/assets/images/tutorial/4.11.png" beforeDir="false" afterPath="$PROJECT_DIR$/codura-ui/src/assets/images/tutorial/4.11.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/codura-ui/src/assets/images/tutorial/4.12.png" beforeDir="false" afterPath="$PROJECT_DIR$/codura-ui/src/assets/images/tutorial/4.12.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/codura-ui/src/assets/images/tutorial/4.13.png" beforeDir="false" afterPath="$PROJECT_DIR$/codura-ui/src/assets/images/tutorial/4.13.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/codura-ui/src/assets/images/tutorial/4.14.png" beforeDir="false" afterPath="$PROJECT_DIR$/codura-ui/src/assets/images/tutorial/4.14.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/codura-ui/src/assets/images/tutorial/4.15.png" beforeDir="false" afterPath="$PROJECT_DIR$/codura-ui/src/assets/images/tutorial/4.15.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/codura-ui/src/assets/images/tutorial/4.16.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/codura-ui/src/assets/images/tutorial/4.9.png" beforeDir="false" afterPath="$PROJECT_DIR$/codura-ui/src/assets/images/tutorial/4.9.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/codura-ui/src/views/code-chat/components/tutorial/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/codura-ui/src/views/code-chat/components/tutorial/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xunmeng/codura/constants/enums/ModeType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xunmeng/codura/constants/enums/ModeType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xunmeng/codura/net/SSEHttpClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xunmeng/codura/net/SSEHttpClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xunmeng/codura/service/CodeCompletionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xunmeng/codura/service/CodeCompletionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xunmeng/codura/service/TemplateService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xunmeng/codura/service/TemplateService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xunmeng/codura/setting/provider/ChatModelProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xunmeng/codura/setting/provider/ChatModelProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xunmeng/codura/setting/provider/FimModelProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xunmeng/codura/setting/provider/FimModelProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xunmeng/codura/setting/provider/SystemInfoProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xunmeng/codura/setting/provider/SystemInfoProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xunmeng/codura/toolwin/sharedchat/browser/ChatWebView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xunmeng/codura/toolwin/sharedchat/browser/ChatWebView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xunmeng/codura/utils/CompletionUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xunmeng/codura/utils/CompletionUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xunmeng/codura/utils/NotifyUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xunmeng/codura/utils/NotifyUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/plugin.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/codura/templates/fillcode-use-chat-en.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/codura/templates/fillcode-use-chat-en.hbs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/codura/templates/fillcode-use-chat-zh.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/codura/templates/fillcode-use-chat-zh.hbs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/icons/logo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/icons/logo.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/xunmeng/codura/scheduler/SchedulerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/xunmeng/codura/scheduler/SchedulerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/codura-server/xunmeng-admin/src/test/java/com/xunmeng/DataCreateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/codura-server/xunmeng-admin/src/test/java/com/xunmeng/DataCreateTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/docker/mysql/sql/init.sql" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/docker/mysql/sql/init.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/docker/mysql/sql/init_data.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/docker/mysql/sql/init_data.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/docker/redis/config/redis.conf" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/docker/redis/config/redis.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/docker/server/config/application-druid.yml" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/docker/server/config/application-druid.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/docker/server/config/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/docker/server/config/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/docker/ui/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/docker/ui/Dockerfile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -508,7 +485,7 @@
       <workItem from="1745238032863" duration="5619000" />
       <workItem from="1745243964391" duration="1432000" />
       <workItem from="1745245720955" duration="3114000" />
-      <workItem from="1745248984375" duration="2979000" />
+      <workItem from="1745248984375" duration="4656000" />
     </task>
     <task id="LOCAL-00001" summary="侧边栏对话 add">
       <created>1723193835119</created>

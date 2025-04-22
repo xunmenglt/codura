@@ -4,9 +4,9 @@ spring:
         type: com.alibaba.druid.pool.DruidDataSource
         driverClassName: com.mysql.cj.jdbc.Driver
         druid:
-            url: jdbc:mysql://devassist-mysql:3306/devassist?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+            url: jdbc:mysql://codura-mysql:3306/codura?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
             username: root
-            password: devassist
+            password: codura
             # 初始连接数
             initialSize: 5
             # 最小连接池数量
@@ -38,8 +38,8 @@ spring:
                 allow:
                 url-pattern: /druid/*
                 # 控制台管理用户名和密码
-                login-username: devassist
-                login-password: devassist
+                login-username: codura
+                login-password: codura
             filter:
                 stat:
                     enabled: true
