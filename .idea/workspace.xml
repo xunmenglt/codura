@@ -10,7 +10,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="95b7f535-2e0b-4fb5-9209-6900033e9799" name="更改" comment="bug修复">
-      <change afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/xunmeng/codura/MyStartupActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/codura-ui/src/assets/images/tutorial/3.1.png" beforeDir="false" afterPath="$PROJECT_DIR$/codura-ui/src/assets/images/tutorial/3.1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/codura-ui/src/assets/images/tutorial/3.2.png" beforeDir="false" afterPath="$PROJECT_DIR$/codura-ui/src/assets/images/tutorial/3.2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/codura-ui/src/assets/images/tutorial/3.4.png" beforeDir="false" afterPath="$PROJECT_DIR$/codura-ui/src/assets/images/tutorial/3.4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/codura-ui/src/assets/images/tutorial/4.1.png" beforeDir="false" afterPath="$PROJECT_DIR$/codura-ui/src/assets/images/tutorial/4.1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/codura-ui/src/assets/images/tutorial/4.10.png" beforeDir="false" afterPath="$PROJECT_DIR$/codura-ui/src/assets/images/tutorial/4.10.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/codura-ui/src/assets/images/tutorial/4.11.png" beforeDir="false" afterPath="$PROJECT_DIR$/codura-ui/src/assets/images/tutorial/4.11.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/codura-ui/src/assets/images/tutorial/4.12.png" beforeDir="false" afterPath="$PROJECT_DIR$/codura-ui/src/assets/images/tutorial/4.12.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/codura-ui/src/assets/images/tutorial/4.13.png" beforeDir="false" afterPath="$PROJECT_DIR$/codura-ui/src/assets/images/tutorial/4.13.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/codura-ui/src/assets/images/tutorial/4.14.png" beforeDir="false" afterPath="$PROJECT_DIR$/codura-ui/src/assets/images/tutorial/4.14.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/codura-ui/src/assets/images/tutorial/4.15.png" beforeDir="false" afterPath="$PROJECT_DIR$/codura-ui/src/assets/images/tutorial/4.15.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/codura-ui/src/assets/images/tutorial/4.16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/codura-ui/src/assets/images/tutorial/4.9.png" beforeDir="false" afterPath="$PROJECT_DIR$/codura-ui/src/assets/images/tutorial/4.9.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/codura-ui/src/views/code-chat/components/tutorial/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/codura-ui/src/views/code-chat/components/tutorial/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xunmeng/codura/constants/enums/ModeType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xunmeng/codura/constants/enums/ModeType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xunmeng/codura/net/SSEHttpClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xunmeng/codura/net/SSEHttpClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xunmeng/codura/service/CodeCompletionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xunmeng/codura/service/CodeCompletionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xunmeng/codura/service/TemplateService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xunmeng/codura/service/TemplateService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xunmeng/codura/setting/provider/ChatModelProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xunmeng/codura/setting/provider/ChatModelProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xunmeng/codura/setting/provider/FimModelProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xunmeng/codura/setting/provider/FimModelProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xunmeng/codura/setting/provider/SystemInfoProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xunmeng/codura/setting/provider/SystemInfoProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xunmeng/codura/toolwin/sharedchat/browser/ChatWebView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xunmeng/codura/toolwin/sharedchat/browser/ChatWebView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xunmeng/codura/utils/CompletionUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xunmeng/codura/utils/CompletionUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xunmeng/codura/utils/NotifyUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xunmeng/codura/utils/NotifyUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/plugin.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/codura/templates/fillcode-use-chat-en.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/codura/templates/fillcode-use-chat-en.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/codura/templates/fillcode-use-chat-zh.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/codura/templates/fillcode-use-chat-zh.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/icons/logo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/icons/logo.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/xunmeng/codura/scheduler/SchedulerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/xunmeng/codura/scheduler/SchedulerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +73,12 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="Codura" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Codura" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
@@ -94,7 +130,7 @@
     &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/liuteng/研究生/个人项目/Codura/Codura-Intellij-idea-2022.2-2023.2-dev&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/liuteng/研究生/个人项目/Codura/Codura-Intellij-idea-2022.2-2023.2-dev/src/main/resources/icons&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -103,7 +139,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.3954023&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.xunmeng.codura.setting.configurable.CodeChatConfigConfigurable&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.xunmeng.codura.setting.configurable.CodeModelProiderConfigurable&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -130,7 +166,7 @@
       <recent name="com.xunmeng.codealien.llm.vllm.response" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.Codura-Intellij-idea-2022.2-2023.2-dev [buildPlugin]">
+  <component name="RunManager" selected="Gradle.Codura-Intellij-idea-2022.2-2023.2-dev [runIde]">
     <configuration default="true" type="DjangoTestsConfigurationType">
       <module name="codealien-idea-2022" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -256,7 +292,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Codura-Intellij-idea-2022.2-2023.2-dev [buildPlugin]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="Codura-Intellij-idea-2022.2-2023.2-dev [buildPlugin]" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -268,6 +304,27 @@
         <option name="taskNames">
           <list>
             <option value="buildPlugin" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="Codura-Intellij-idea-2022.2-2023.2-dev [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="clean" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -313,8 +370,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.Codura-Intellij-idea-2022.2-2023.2-dev [buildPlugin]" />
         <item itemvalue="Gradle.Codura-Intellij-idea-2022.2-2023.2-dev [runIde]" />
+        <item itemvalue="Gradle.Codura-Intellij-idea-2022.2-2023.2-dev [clean]" />
       </list>
     </recent_temporary>
   </component>
@@ -439,6 +496,19 @@
       <workItem from="1745072402702" duration="393000" />
       <workItem from="1745072804971" duration="747000" />
       <workItem from="1745075278139" duration="432000" />
+      <workItem from="1745143555934" duration="613000" />
+      <workItem from="1745151799594" duration="2137000" />
+      <workItem from="1745155652826" duration="101000" />
+      <workItem from="1745155773522" duration="1143000" />
+      <workItem from="1745157584813" duration="923000" />
+      <workItem from="1745158514135" duration="41000" />
+      <workItem from="1745158563869" duration="18000" />
+      <workItem from="1745158588919" duration="2365000" />
+      <workItem from="1745234201533" duration="3420000" />
+      <workItem from="1745238032863" duration="5619000" />
+      <workItem from="1745243964391" duration="1432000" />
+      <workItem from="1745245720955" duration="3114000" />
+      <workItem from="1745248984375" duration="2979000" />
     </task>
     <task id="LOCAL-00001" summary="侧边栏对话 add">
       <created>1723193835119</created>
@@ -591,18 +661,13 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/service/CodeCompletionService.java</url>
-          <line>317</line>
+          <line>314</line>
           <option name="timeStamp" value="79" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/service/CodeCompletionService.java</url>
-          <line>334</line>
+          <line>339</line>
           <option name="timeStamp" value="81" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/service/CodeCompletionService.java</url>
-          <line>341</line>
-          <option name="timeStamp" value="82" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/toolwin/sharedchat/SharedChatPane.java</url>
@@ -613,6 +678,46 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/toolwin/sharedchat/SharedChatPane.java</url>
           <line>378</line>
           <option name="timeStamp" value="93" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/service/CodeCompletionService.java</url>
+          <line>425</line>
+          <option name="timeStamp" value="102" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/service/CodeCompletionService.java</url>
+          <line>414</line>
+          <option name="timeStamp" value="103" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/service/CodeCompletionService.java</url>
+          <line>378</line>
+          <option name="timeStamp" value="104" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/service/CodeCompletionService.java</url>
+          <line>389</line>
+          <option name="timeStamp" value="105" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/service/CodeCompletionService.java</url>
+          <line>321</line>
+          <option name="timeStamp" value="106" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/net/SSEHttpClient.java</url>
+          <line>45</line>
+          <option name="timeStamp" value="111" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/service/CodeCompletionService.java</url>
+          <line>207</line>
+          <option name="timeStamp" value="112" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/service/TemplateService.java</url>
+          <line>93</line>
+          <option name="timeStamp" value="113" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -25,7 +25,7 @@
     <depends>com.intellij.java</depends>
 
     <resource-bundle>codura.messages.CodeBundle</resource-bundle>
-    
+
     <extensions defaultExtensionNs="com.intellij">
         <!--全局异常处理-->
         <!-- 插件的应用程序组件 -->
@@ -71,7 +71,7 @@
         <postStartupActivity implementation="com.xunmeng.codura.listeners.ProjectStartListener"/>
         <editorFactoryListener implementation="com.xunmeng.codura.listeners.EditorListener"/>
         <copyPastePreProcessor implementation="com.xunmeng.codura.listeners.CopyPasteListener"/>
-            
+        <postStartupActivity implementation="com.xunmeng.codura.MyStartupActivity"/>
     </extensions>
 
     <!-- 插件的应用程序组件 -->

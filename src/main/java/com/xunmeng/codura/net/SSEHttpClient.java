@@ -73,13 +73,13 @@ public class SSEHttpClient {
                 // 判断是否成功建立连接
                 if (response.code() < 200 || response.code() > 300) {
                     if (streamResquest != null) {
-                        streamResquest.getResponseCallable().onError(new RuntimeException("Server responded with status code: %d".formatted(response.code())));
+                        streamResquest.getResponseCallable().onError(new RuntimeException("模型API服务接口请求异常,状态码: %d".formatted(response.code())));
                     }
                 }
                 // 判断是否有可读流
                 if (response.body() == null) {
                     if (streamResquest != null) {
-                        streamResquest.getResponseCallable().onError(new RuntimeException("Failed to get a ReadableStream from the response"));
+                        streamResquest.getResponseCallable().onError(new RuntimeException("模型API服务不符合流式请求规范"));
                     }
                 }
                 // 说明可以进行处理了
@@ -99,6 +99,9 @@ public class SSEHttpClient {
                             try {
                                 JsonNode jsonNode = safeParseJsonResponse(line);
                                 if (jsonNode != null) streamResquest.getResponseCallable().onData(jsonNode);
+                                else {
+                                    return;
+                                }
                             } catch (Exception e) {
                                 if (streamResquest != null) {
                                     streamResquest.getResponseCallable().onError(e);
@@ -139,7 +142,8 @@ public class SSEHttpClient {
             JsonNode jsonNode = objectMapper.readTree(stringBuffer);
             return jsonNode;
         } catch (Exception e) {
-            throw new RuntimeException("Error parsing JSON data from event");
+            return null;
+//            throw new RuntimeException("Error parsing JSON data from event");
         }
     }
 

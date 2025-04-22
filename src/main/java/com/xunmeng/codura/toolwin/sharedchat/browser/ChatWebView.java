@@ -17,6 +17,8 @@ import com.xunmeng.codura.utils.JsonUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.cef.CefApp;
 import org.cef.browser.CefBrowser;
+import org.cef.callback.CefCommandLine;
+import org.cef.handler.CefAppHandlerAdapter;
 import org.cef.handler.CefLoadHandlerAdapter;
 
 import javax.swing.*;
@@ -87,6 +89,7 @@ public class ChatWebView implements Disposable {
         );
         
         // 在应用程序初始化时注册SchemeHandlerFactory 以便处理对应的协议程序
+
         CefApp.getInstance().registerSchemeHandlerFactory("http", "codura", new RequestHandlerFactory());
         JBCefJSQuery myJSQueryOpenInBrowser = JBCefJSQuery.create((JBCefBrowserBase)browser);
         myJSQueryOpenInBrowser.addHandler((msg)->{

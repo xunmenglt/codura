@@ -5,6 +5,7 @@ import com.github.jknack.handlebars.Template;
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.components.Service;
 import com.intellij.openapi.diagnostic.Logger;
+import com.xunmeng.codura.constants.Constants;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.File;
@@ -39,9 +40,9 @@ public final class TemplateService implements Disposable {
     }
     
     private void initBasePath(){
-        File file = new File(System.getProperty("user.home"), ".codealien/templates");
+        File file = new File(System.getProperty("user.home"), Constants.APP_NAME+"/templates");
         tmpPath=file.getPath();
-        String path = TemplateService.class.getClassLoader().getResource("codura/templates").getPath();
+        String path = TemplateService.class.getClassLoader().getResource(Constants.APP_NAME+"/templates").getPath();
         basePath=new File(path).getPath();
     }    
     // 创建模板目录

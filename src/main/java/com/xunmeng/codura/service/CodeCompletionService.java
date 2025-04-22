@@ -6,12 +6,17 @@ import com.intellij.lang.ASTNode;
 import com.intellij.lang.Language;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.command.WriteCommandAction;
 import com.intellij.openapi.components.Service;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.editor.*;
+import com.intellij.openapi.fileTypes.FileType;
+import com.intellij.openapi.fileTypes.LanguageFileType;
+import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.Disposer;
-import com.intellij.psi.PsiDocumentManager;
-import com.intellij.psi.PsiParserFacade;
+import com.intellij.psi.*;
+import com.intellij.psi.codeStyle.CodeStyleManager;
+import com.intellij.psi.util.PsiTreeUtil;
 import com.intellij.util.concurrency.AppExecutorUtil;
 import com.xunmeng.codura.constants.*;
 import com.xunmeng.codura.constants.enums.FimTemplateType;
@@ -39,10 +44,7 @@ import com.xunmeng.codura.status.CodeStatusService;
 import com.xunmeng.codura.system.logs.LogExecutor;
 import com.xunmeng.codura.system.logs.constans.AIUsageType;
 import com.xunmeng.codura.system.logs.pojo.AIUsageLog;
-import com.xunmeng.codura.utils.CompletionCache;
-import com.xunmeng.codura.utils.CompletionUtils;
-import com.xunmeng.codura.utils.FimTemplateUtils;
-import com.xunmeng.codura.utils.JsonUtils;
+import com.xunmeng.codura.utils.*;
 import okhttp3.Call;
 import org.apache.commons.lang3.StringUtils;
 
@@ -196,7 +198,7 @@ public final class CodeCompletionService {
         // 获取文件解析器
         parser = PsiParserFacade.getInstance(editor.getProject());
         // 获取当前鼠标指针所在的位置
-        nodeAtPosition = CompletionUtils.getNodeAtPosition(document, editor);
+        nodeAtPosition = CompletionUtils.safeRead(()->CompletionUtils.getNodeAtPosition(document, editor));
         // 根据鼠标在代码中的位置判断接下来是否可以多行补全
         this.isMultilineCompletion = CompletionUtils.getIsMultilineCompletion(nodeAtPosition, prefixSuffix, editor);
         // 清空定时器
@@ -299,15 +301,10 @@ public final class CodeCompletionService {
             @Override
             public <T> void onStart(T item) {
                 call = (Call) item;
-                codeAlienInProgress();
-                ApplicationManager.getApplication().invokeLater(() -> {
-                    doRender(editor, null, true);
-                });
             }
 
             @Override
             public <D> void onData(D result) {
-                codeAlienInProgress();
                 ResponseDataBaseItem dataItem = null;
 
                 try {
@@ -320,17 +317,25 @@ public final class CodeCompletionService {
                     logger.error(e);
                 }
                 String data = dataItem.contentValue();
-                String completion = onCompletionData(data);
-                if (!StringUtils.isEmpty(completion)) {
+                String _completion = onCompletionData(data);
+                if (!StringUtils.isEmpty(_completion)) {
                     call.cancel();
+                }else {
+                    // 渲染内容
+                    ApplicationManager.getApplication().invokeLater(() -> {
+                        clearRender();
+                        doRender(editor, completion, false);
+                    });
                 }
             }
 
             @Override
             public <E> void onEnd(E item) {
-                provideInlineCompletion();
-                canTab = true;
-                codeAlienOnDone();
+                ApplicationManager.getApplication().invokeLater(()->{
+                    provideInlineCompletion();
+                    canTab = true;
+                    codeAlienOnDone();
+                });
             }
 
             @Override
@@ -339,7 +344,8 @@ public final class CodeCompletionService {
                 if (call != null) {
                     call.cancel();
                 }
-                codeAlienOnError();
+                codeAlienOnError(throwable.getMessage());
+                NotifyUtils.error(throwable.getMessage());
                 ApplicationManager.getApplication().invokeLater(() -> {
                     clearRender();
                 });
@@ -356,6 +362,8 @@ public final class CodeCompletionService {
             if (StringUtils.isEmpty(providerFimData)) return "";
             // 更新补全内容
             this.completion = this.completion + providerFimData;
+            // 消除markdown
+            this.completion=clearMarkdownHeader(completion);
             this.chunkCount = this.chunkCount + 1;
             // 处理空补全，超过一定空格，停止生成
             if (this.completion.length() > MAX_EMPTY_COMPLETION_CHARS && this.completion.trim().length() == 0) {
@@ -389,16 +397,19 @@ public final class CodeCompletionService {
                             || (MULTILINE_INSIDE.contains(elementType) &&
                             this.nodeAtPosition.getChildren(null).length > 2);
                     // 获取当前选中行文本
-                    String lineText = CompletionUtils.getCurrentLineText(this.position, document);
+                    String lineText = CompletionUtils.safeRead(()->CompletionUtils.getCurrentLineText(this.position, document));
                     if (parser == null) return "";
                     if (providerFimData.indexOf("\n") != -1 && this.nodeAtPosition != null) {
                         Language language = this.nodeAtPosition.getPsi().getLanguage();
                         boolean hasError = false;
-                        try {
-                            parser.createBlockCommentFromText(language, lineText + completion);
-                        } catch (Exception e) {
-                            hasError = true;
-                        }
+                        CompletionUtils.safeRead(()->{
+                            try {
+                                parser.createBlockCommentFromText(language, lineText + completion);
+                                return false;
+                            } catch (Exception e) {
+                                return true;
+                            }
+                        });
                         if (this.isMultilineCompletion && this.chunkCount >= 2 && takeFirst && !hasError) {
                             if (MULTI_LINE_DELIMITERS.stream().anyMatch((e) -> this.completion.endsWith(e))) {
                                 return this.completion;
@@ -453,11 +464,76 @@ public final class CodeCompletionService {
         return fimModelProvider;
     }
 
+
+    private String clearMarkdownHeader(String str){
+        String[] split = str.split("\n");
+        if (split.length<=2) return str;
+        StringBuilder sb = new StringBuilder("");
+        for(int i=0;i<split.length;i++){
+            String line=split[i];
+            if (i==0 && line.strip().startsWith("```")) continue;
+            if (i==split.length-1){
+                line.replace("```","");
+            }
+            sb.append(line);
+            if (i!=split.length-1) sb.append("\n");
+        }
+        return sb.toString();
+    }
+
+    private String formatInsertedCode(Project project, String prefix, String fillCode, String suffix) {
+        String fullText = prefix + fillCode + suffix;
+
+        // 获取语言和文件名
+        PsiFile psiFile = CompletionUtils.safeRead(()->PsiDocumentManager.getInstance(project).getPsiFile(document));
+        if (psiFile == null) return fillCode;
+
+        Language language = psiFile.getLanguage();
+        String name = psiFile.getName();
+
+        // 构建新的临时 PsiFile
+        PsiFile newPsiFile = CompletionUtils.safeRead(()->PsiFileFactory.getInstance(project).createFileFromText(
+                name, language, fullText
+        ));
+
+        FileType fileType = psiFile.getFileType();
+        if (!(fileType instanceof LanguageFileType)) return fillCode;
+
+
+        int fillCodeStartOffset = prefix.length();
+        int fillCodeEndOffset = prefix.length() + fillCode.length();
+
+        PsiElement startElement = newPsiFile.findElementAt(fillCodeStartOffset);
+        PsiElement endElement = newPsiFile.findElementAt(fillCodeEndOffset - 1);
+        if (startElement == null || endElement == null) return fillCode;
+
+        PsiElement commonParent = CompletionUtils.safeRead(()->PsiTreeUtil.findCommonParent(startElement, endElement));
+        if (commonParent == null) return fillCode;
+
+        // 必须放在 WriteCommandAction 中格式化 PSI
+        WriteCommandAction.runWriteCommandAction(project, () -> {
+            CodeStyleManager.getInstance(project).reformat(commonParent);
+        });
+
+        // 提取格式化后文本
+        String formattedAll = newPsiFile.getText();
+        try {
+            String res = formattedAll.substring(fillCodeStartOffset, fillCodeEndOffset).trim();
+            return res;
+        }catch (Exception e){
+            return fillCode;
+        }
+    }
+
+
     private void provideInlineCompletion() {
+        clearRender();
+
         if (editor == null || nodeAtPosition == null) {
             return;
         }
         // todo 清除响应结果停止词
+        completion=formatInsertedCode(editor.getProject(),prefixSuffix.getPrefix(),completion,prefixSuffix.getSuffix());
         String formattedCompletion = completion;
         if (this.completionCacheEnabled) {
             cache.setCache(this.prefixSuffix, formattedCompletion);
@@ -488,7 +564,7 @@ public final class CodeCompletionService {
 
     public void clearRender() {
         InlayModel inlayModel = editor.getInlayModel();
-        int offset = editor.getCaretModel().getOffset();
+        int offset = CompletionUtils.safeRead(()->editor.getCaretModel().getOffset());
         int clearLength = Math.max(THINKING_TEXT.length(), completion.length());
         inlayModel.getInlineElementsInRange(offset, offset + clearLength).forEach((it -> Disposer.dispose(it)));
         inlayModel.getBlockElementsInRange(offset, offset + clearLength).forEach((it -> Disposer.dispose(it)));
@@ -580,11 +656,14 @@ public final class CodeCompletionService {
     }
 
     private void codeAlienInProgress() {
+        ApplicationManager.getApplication().invokeLater(() -> {
+            doRender(editor, null, true);
+        });
         CodeStatusService.notifyApplication(CodeStatus.InProgress, null);
     }
 
-    private void codeAlienOnError() {
-        CodeStatusService.notifyApplication(CodeStatus.Error, null);
+    private void codeAlienOnError(String message) {
+        CodeStatusService.notifyApplication(CodeStatus.Error, message);
     }
 
     private void codeAlienOnDone() {

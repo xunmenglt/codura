@@ -27,9 +27,9 @@ public class SystemInfoProvider implements Provider{
 
     public static SystemInfoProvider getDefaultProvider() {
         SystemInfoProvider systemInfoProvider = new SystemInfoProvider();
-        systemInfoProvider.base="";
-        systemInfoProvider.host="127.0.0.1";
-        systemInfoProvider.port=8080;
+        systemInfoProvider.base="/app";
+        systemInfoProvider.host="175.178.58.161";
+        systemInfoProvider.port=80;
         systemInfoProvider.protocol=ProtocolType.HTTP;
         return systemInfoProvider;
     }

@@ -17,12 +17,12 @@ public class FimModelProvider extends ModelProvider{
         provider.setLabel("代码补全模型-CodeQwen");
         provider.setType(ProviderType.FIM);
         provider.setOpenApiType(OpenApiType.OPENAI);
-        provider.setModelName(ModeType.CODEQWEN_FIM);
+        provider.setModelName(ModeType.GPT_4_O_MINI);
         provider.setHostName(Constants.HOST);
         provider.setProtocol(ProtocolType.HTTP);
         provider.setPort(Constants.PORT);
         provider.setPath(Constants.FIM_SERVER_PATH);
-        provider.setFimTemplateType(FimTemplateType.CODEQWEN);
+        provider.setFimTemplateType(FimTemplateType.USECHAT);
         return provider;
     }
 

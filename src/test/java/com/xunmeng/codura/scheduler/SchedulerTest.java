@@ -11,13 +11,10 @@ import java.util.concurrent.TimeUnit;
 public class SchedulerTest {
     @Test
     public void schedulerTest() throws InterruptedException {
-        ScheduledExecutorService scheduler = AppExecutorUtil.createBoundedScheduledExecutorService("SMCCompletionScheduler", 1);
-        System.out.println(new Date().getTime());
-        ScheduledFuture<?> schedule = scheduler.schedule(() -> {
-            System.out.println("哈哈哈" + new Date().getTime());
-        }, 5, TimeUnit.SECONDS);
-        Thread.sleep(2000);
-        schedule.cancel(true);
-        System.out.println(new Date().getTime());
+
+        // 帮我编写一个 ScheduledExecutorService测试模块
+
+
+
     }
 }

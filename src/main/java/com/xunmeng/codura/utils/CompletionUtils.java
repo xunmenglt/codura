@@ -2,11 +2,13 @@ package com.xunmeng.codura.utils;
 
 import com.intellij.lang.ASTNode;
 import com.intellij.lang.Language;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.CaretModel;
 import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.fileEditor.FileEditorManager;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.util.Computable;
 import com.intellij.openapi.util.TextRange;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.*;
@@ -28,7 +30,7 @@ public class CompletionUtils {
     public static PrefixSuffix getPrefixSuffix(int numLineContext, Document document, CaretModel caretModel) {
         double contextRatioPrefix = 0.85;
         double contextRatioSuffix = 0.15;
-        return getPrefixSuffix(numLineContext,document,caretModel,contextRatioPrefix,contextRatioSuffix);
+        return safeRead(()-> getPrefixSuffix(numLineContext,document,caretModel,contextRatioPrefix,contextRatioSuffix));
     }
     
     public static PrefixSuffix getPrefixSuffix(int numLines, Document document, CaretModel caretModel,double contextRatioPrefix,double contextRatioSuffix) {
@@ -74,7 +76,7 @@ public class CompletionUtils {
         String textAfter=document.getText(new TextRange(startOffset,endOffset));
         
         // 获取光标前后字符
-        String charBefore = getBeforeAndAfter(editor)[0];
+        String charBefore = safeRead(()->getBeforeAndAfter(editor)[0]);
         if (getSkipVariableDeclataion(charBefore, textAfter)) {
             return true;
         }
@@ -133,7 +135,7 @@ public class CompletionUtils {
     }
 
     public static boolean getIsMiddleOfString(Editor editor) {
-        String[] beforeAndAfter = getBeforeAndAfter(editor);
+        String[] beforeAndAfter = safeRead(()->getBeforeAndAfter(editor));
         String charBefore= beforeAndAfter[0]; 
         String charAfter  = beforeAndAfter[1];
         Pattern WORD_PATTERN = Pattern.compile("\\w");
@@ -186,13 +188,13 @@ public class CompletionUtils {
     
     // 判断鼠标指针是否在引号之内
     private static boolean isCursorInEmptyString(Editor editor) {
-        String[] beforeAndAfter = getBeforeAndAfter(editor);
+        String[] beforeAndAfter = safeRead(()->getBeforeAndAfter(editor));
         return QUOTES.contains(beforeAndAfter[0]) && QUOTES.contains(beforeAndAfter[1]);
     }
     
     // 判断字符串指针前后是否有字符
     private static boolean getHasLineTextBeforeAndAfter(Editor editor) {
-        String[] beforeAndAfter = getBeforeAndAfter(editor);
+        String[] beforeAndAfter = safeRead(()->getBeforeAndAfter(editor));
         
         return (!StringUtils.isEmpty(beforeAndAfter[0])) && (!StringUtils.isEmpty(beforeAndAfter[1]));
     }
@@ -212,9 +214,13 @@ public class CompletionUtils {
         String line = document.getText(new TextRange(startOffset, endOffset));
         return line;
     }
+
+    public static <T> T safeRead(Computable<T> action) {
+        return ApplicationManager.getApplication().runReadAction(action);
+    }
     
     public static Languages.CodeLanguageDetails getLanguage(Editor editor){
-        String languageId = PsiDocumentManager.getInstance(editor.getProject()).getPsiFile(editor.getDocument()).getLanguage().getID().toLowerCase();
+        String languageId = safeRead(()->PsiDocumentManager.getInstance(editor.getProject()).getPsiFile(editor.getDocument()).getLanguage().getID().toLowerCase());
         Languages.CodeLanguageDetails lang = Languages.getLang(languageId);
         return lang;
     }
@@ -235,10 +241,14 @@ public class CompletionUtils {
         }
         return null;
     }
-    
+
+
+    public static Snippet getSnippet(){
+        return safeRead(()->_getSnippet());
+    }
     
     // 获取剪贴版内容
-    public static Snippet getSnippet(){
+    private static Snippet _getSnippet(){
         Project project=LastUsedProject.getLastUsedProject();
         Snippet snippet=null;
         if (!project.isDisposed()){
