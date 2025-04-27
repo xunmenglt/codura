@@ -48,7 +48,12 @@ public class DataCreateTest {
         result.add(chineseNames);
         return result;
     }
-    
+
+    @Test
+    public void runAction(){
+
+    }
+
 //    @Test
     public void run(){
         List<List<String>> randomUser = createRandomUser(30);
@@ -114,6 +119,6 @@ public class DataCreateTest {
         
     }
     
-    
+
     
 }

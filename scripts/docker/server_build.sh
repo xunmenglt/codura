@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 设置变量
-ITEM_DIR="./devassist-server"
+ITEM_DIR="./codura-server"
 ROOT_DIR="$(dirname "$(pwd)")/.."
 
 # 进入根目录
@@ -27,11 +27,11 @@ fi
 JAR_FILE="xunmeng-admin/target/*.jar"
 
 # 重命名 JAR 文件
-mv "$JAR_FILE" "devassist-server.jar"
+mv "$JAR_FILE" "codura-server.jar"
 
 # 检查重命名结果
 if [ $? -eq 0 ]; then
-    echo "JAR file renamed successfully to devassist-server.jar"
+    echo "JAR file renamed successfully to codura-server.jar"
 else
     echo "Failed to rename JAR file."
     exit 1
@@ -42,11 +42,11 @@ cd .. || exit 1
 
 # 输出当前目录信息
 echo "Current Dir is $(pwd)"
-echo "Original project jar package location: $ITEM_DIR/xunmeng-admin/target/devassist-server.jar"
-echo "Target project jar package location: $(pwd)/devassist-server.jar"
+echo "Original project jar package location: $ITEM_DIR/xunmeng-admin/target/codura-server.jar"
+echo "Target project jar package location: $(pwd)/codura-server.jar"
 
 # 移动 JAR 文件到根目录
-mv "$ITEM_DIR/xunmeng-admin/target/devassist-server.jar" "$(pwd)/devassist-server.jar"
+mv "$ITEM_DIR/xunmeng-admin/target/codura-server.jar" "$(pwd)/codura-server.jar"
 
 # 检查文件移动结果
 if [ $? -eq 0 ]; then

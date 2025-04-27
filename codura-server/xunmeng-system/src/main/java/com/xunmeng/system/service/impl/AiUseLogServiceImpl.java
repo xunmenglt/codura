@@ -81,7 +81,11 @@ public class AiUseLogServiceImpl extends ServiceImpl<AiUseLogMapper, AiUseLog> i
     private boolean updateUserUseInfo(AiUseLog aiUseLog) {
         if (aiUseLog.getEventType()==null) return true;
         
-        UserUseInfo useInfo = userUseInfoService.getOne(new QueryWrapper<UserUseInfo>().eq("user_id", aiUseLog.getUserId()));
+        UserUseInfo useInfo = userUseInfoService.getOne(
+                new QueryWrapper<UserUseInfo>().eq("user_id", aiUseLog.getUserId()).orderByDesc(
+                    "create_time"
+                ).last("LIMIT 1")
+        );
 
         if (useInfo == null) {
             useInfo = new UserUseInfo();

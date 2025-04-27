@@ -1,6 +1,6 @@
 @echo off
 
-set ITEM_DIR=.\devassist-server
+set ITEM_DIR=.\codura-server
 set ROOT_DIR=%~dp0\..\..
 
 pushd %ROOT_DIR%
@@ -19,10 +19,10 @@ if %ERRORLEVEL% equ 0 (
 
 set JAR_FILE=xunmeng-admin\target\*.jar
 
-ren "%JAR_FILE%" devassist-server.jar
+ren "%JAR_FILE%" codura-server.jar
 
 if %ERRORLEVEL% equ 0 (
-    echo JAR file renamed successfully to devassist-server.jar
+    echo JAR file renamed successfully to codura-server.jar
 ) else (
     echo Failed to rename JAR file.
     exit /b 1
@@ -30,10 +30,10 @@ if %ERRORLEVEL% equ 0 (
 
 cd ..
 echo Current Dir is %CD%
-echo Original project jar package location: %ITEM_DIR%\xunmeng-admin\target\devassist-server.jar
-echo Target project jar package location: %CD%\scripts\docker\server\devassist-server.jar
+echo Original project jar package location: %ITEM_DIR%\xunmeng-admin\target\codura-server.jar
+echo Target project jar package location: %CD%\scripts\docker\server\codura-server.jar
 
-move %ITEM_DIR%\xunmeng-admin\target\devassist-server.jar "%CD%\scripts\docker\server\devassist-server.jar"
+move %ITEM_DIR%\xunmeng-admin\target\codura-server.jar "%CD%\scripts\docker\server\codura-server.jar"
 
 if %ERRORLEVEL% equ 0 (
     echo JAR file moved to root directory successfully.

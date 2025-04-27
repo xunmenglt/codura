@@ -213,7 +213,7 @@ CREATE TABLE `sys_user_role` (
 
 insert  into `sys_user_role`(`id`,`user_name`,`role_name`) values 
 (1,'admin','admin'),
-(2,'liuteng','programmer');
+(2,'codura','programmer');
 
 /*Table structure for table `sys_variable` */
 

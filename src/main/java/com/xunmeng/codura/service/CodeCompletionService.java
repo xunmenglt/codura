@@ -317,6 +317,9 @@ public final class CodeCompletionService {
                     logger.error(e);
                 }
                 String data = dataItem.contentValue();
+                if (data==null){
+                    data="";
+                }
                 String _completion = onCompletionData(data);
                 if (!StringUtils.isEmpty(_completion)) {
                     call.cancel();
@@ -473,7 +476,7 @@ public final class CodeCompletionService {
             String line=split[i];
             if (i==0 && line.strip().startsWith("```")) continue;
             if (i==split.length-1){
-                line.replace("```","");
+                line=line.replace("```","");
             }
             sb.append(line);
             if (i!=split.length-1) sb.append("\n");
@@ -482,6 +485,8 @@ public final class CodeCompletionService {
     }
 
     private String formatInsertedCode(Project project, String prefix, String fillCode, String suffix) {
+        if (prefix==null) prefix="";
+        if (suffix==null) suffix="";
         String fullText = prefix + fillCode + suffix;
 
         // 获取语言和文件名
@@ -517,8 +522,9 @@ public final class CodeCompletionService {
 
         // 提取格式化后文本
         String formattedAll = newPsiFile.getText();
+        int endoffset=formattedAll.length()-suffix.length();
         try {
-            String res = formattedAll.substring(fillCodeStartOffset, fillCodeEndOffset).trim();
+            String res = formattedAll.substring(fillCodeStartOffset, endoffset).trim();
             return res;
         }catch (Exception e){
             return fillCode;

@@ -14,7 +14,7 @@ public class RequestBodyBaseOpenAI extends RequestBodyBase {
     @JsonProperty(value = "model",required = true)
     private String model;
     @JsonProperty(value = "max_tokens")
-    private int max_tokens=256;
+    private int max_tokens=2048;
     @JsonProperty(value = "stream")
     private boolean stream=true;
     @JsonProperty(value = "stop",required = false)

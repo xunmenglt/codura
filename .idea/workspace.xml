@@ -12,12 +12,16 @@
     <list default="true" id="95b7f535-2e0b-4fb5-9209-6900033e9799" name="更改" comment="bug修复">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/codura-server/xunmeng-admin/src/test/java/com/xunmeng/DataCreateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/codura-server/xunmeng-admin/src/test/java/com/xunmeng/DataCreateTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/codura-server/xunmeng-system/src/main/java/com/xunmeng/system/service/impl/AiUseLogServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/codura-server/xunmeng-system/src/main/java/com/xunmeng/system/service/impl/AiUseLogServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/codura-ui/src/store/modules/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/codura-ui/src/store/modules/user.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/docker/mysql/sql/init.sql" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/docker/mysql/sql/init.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/docker/mysql/sql/init_data.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/docker/mysql/sql/init_data.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/docker/redis/config/redis.conf" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/docker/redis/config/redis.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/docker/server/config/application-druid.yml" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/docker/server/config/application-druid.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/docker/server/config/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/docker/server/config/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/docker/ui/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/docker/ui/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/docker/server_build.bat" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/docker/server_build.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/docker/server_build.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/docker/server_build.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/docker/ui/nginx/conf.d/default.conf" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/docker/ui/nginx/conf.d/default.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xunmeng/codura/llm/openai/request/RequestBodyBaseOpenAI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xunmeng/codura/llm/openai/request/RequestBodyBaseOpenAI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xunmeng/codura/service/CodeCompletionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xunmeng/codura/service/CodeCompletionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/codura/templates/fillcode-use-chat-en.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/codura/templates/fillcode-use-chat-en.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/codura/templates/fillcode-use-chat-zh.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/codura/templates/fillcode-use-chat-zh.hbs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +111,7 @@
     &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/liuteng/研究生/个人项目/Codura/Codura-Intellij-idea-2022.2-2023.2-dev/src/main/resources/icons&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/liuteng/研究生/个人项目/Codura/Codura-Intellij-idea-2022.2-2023.2-dev&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -290,6 +294,27 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="Codura-Intellij-idea-2022.2-2023.2-dev [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="Codura-Intellij-idea-2022.2-2023.2-dev [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -348,6 +373,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.Codura-Intellij-idea-2022.2-2023.2-dev [runIde]" />
+        <item itemvalue="Gradle.Codura-Intellij-idea-2022.2-2023.2-dev [build]" />
         <item itemvalue="Gradle.Codura-Intellij-idea-2022.2-2023.2-dev [clean]" />
       </list>
     </recent_temporary>
@@ -485,7 +511,10 @@
       <workItem from="1745238032863" duration="5619000" />
       <workItem from="1745243964391" duration="1432000" />
       <workItem from="1745245720955" duration="3114000" />
-      <workItem from="1745248984375" duration="4656000" />
+      <workItem from="1745248984375" duration="10587000" />
+      <workItem from="1745383311712" duration="1657000" />
+      <workItem from="1745719194650" duration="2319000" />
+      <workItem from="1745721980838" duration="2209000" />
     </task>
     <task id="LOCAL-00001" summary="侧边栏对话 add">
       <created>1723193835119</created>
@@ -532,172 +561,6 @@
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/system/logs/LogExecutor.java</url>
-          <line>159</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/utils/RSAEncryptionUtil.java</url>
-          <line>75</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/system/logs/LogUtil.java</url>
-          <line>92</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/utils/AESUtil.java</url>
-          <line>59</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/utils/AESUtil.java</url>
-          <line>50</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/setting/configurable/CodeConfigurable.java</url>
-          <line>26</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/setting/configurable/CodeConfigurable.java</url>
-          <line>24</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/toolwin/sharedchat/SharedChatPane.java</url>
-          <line>362</line>
-          <option name="timeStamp" value="26" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/toolwin/sharedchat/SharedChatPane.java</url>
-          <line>391</line>
-          <option name="timeStamp" value="28" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/toolwin/sharedchat/SharedChatPane.java</url>
-          <line>286</line>
-          <option name="timeStamp" value="29" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/toolwin/sharedchat/SharedChatPane.java</url>
-          <line>320</line>
-          <option name="timeStamp" value="34" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/toolwin/sharedchat/SharedChatPane.java</url>
-          <line>309</line>
-          <option name="timeStamp" value="35" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/exceptions/GlobalExceptionHandler.java</url>
-          <line>8</line>
-          <option name="timeStamp" value="43" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/system/logs/LogExecutor.java</url>
-          <line>170</line>
-          <option name="timeStamp" value="47" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/service/ChatService.java</url>
-          <line>123</line>
-          <option name="timeStamp" value="49" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/service/ChatService.java</url>
-          <line>138</line>
-          <option name="timeStamp" value="50" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/service/ChatService.java</url>
-          <line>159</line>
-          <option name="timeStamp" value="51" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/system/logs/LogExecutor.java</url>
-          <line>180</line>
-          <option name="timeStamp" value="54" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/system/apis/AiUseLogAPI.java</url>
-          <line>21</line>
-          <option name="timeStamp" value="55" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/listeners/ProjectStartListener.java</url>
-          <line>40</line>
-          <option name="timeStamp" value="77" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/service/CodeCompletionService.java</url>
-          <line>314</line>
-          <option name="timeStamp" value="79" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/service/CodeCompletionService.java</url>
-          <line>339</line>
-          <option name="timeStamp" value="81" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/toolwin/sharedchat/SharedChatPane.java</url>
-          <line>258</line>
-          <option name="timeStamp" value="92" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/toolwin/sharedchat/SharedChatPane.java</url>
-          <line>378</line>
-          <option name="timeStamp" value="93" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/service/CodeCompletionService.java</url>
-          <line>425</line>
-          <option name="timeStamp" value="102" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/service/CodeCompletionService.java</url>
-          <line>414</line>
-          <option name="timeStamp" value="103" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/service/CodeCompletionService.java</url>
-          <line>378</line>
-          <option name="timeStamp" value="104" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/service/CodeCompletionService.java</url>
-          <line>389</line>
-          <option name="timeStamp" value="105" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/service/CodeCompletionService.java</url>
-          <line>321</line>
-          <option name="timeStamp" value="106" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/net/SSEHttpClient.java</url>
-          <line>45</line>
-          <option name="timeStamp" value="111" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/service/CodeCompletionService.java</url>
-          <line>207</line>
-          <option name="timeStamp" value="112" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/xunmeng/codura/service/TemplateService.java</url>
-          <line>93</line>
-          <option name="timeStamp" value="113" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
