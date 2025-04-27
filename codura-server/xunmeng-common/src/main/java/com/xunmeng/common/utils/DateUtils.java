@@ -233,4 +233,13 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils
         Date endOfDay = calendar.getTime(); // 当天的结束时间（23:59:59.999）
         return endOfDay;
     }
+
+    public static boolean isToday(Date oldDate) {
+        Calendar today = Calendar.getInstance();
+        Calendar dateToCheck = Calendar.getInstance();
+        dateToCheck.setTime(oldDate);
+
+        return today.get(Calendar.YEAR) == dateToCheck.get(Calendar.YEAR)
+                && today.get(Calendar.DAY_OF_YEAR) == dateToCheck.get(Calendar.DAY_OF_YEAR);
+    }
 }

@@ -7,6 +7,7 @@ import cn.hutool.extra.tokenizer.Word;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.xunmeng.common.config.XunMengConfig;
 import com.xunmeng.common.constant.AIUsageType;
+import com.xunmeng.common.utils.DateUtils;
 import com.xunmeng.common.utils.JsonUtils;
 import com.xunmeng.system.pojo.AiUseLog;
 import com.xunmeng.system.mapper.AiUseLogMapper;
@@ -21,6 +22,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 
@@ -78,21 +80,12 @@ public class AiUseLogServiceImpl extends ServiceImpl<AiUseLogMapper, AiUseLog> i
         return false;
     }
 
+
+
     private boolean updateUserUseInfo(AiUseLog aiUseLog) {
         if (aiUseLog.getEventType()==null) return true;
         
-        UserUseInfo useInfo = userUseInfoService.getOne(
-                new QueryWrapper<UserUseInfo>().eq("user_id", aiUseLog.getUserId()).orderByDesc(
-                    "create_time"
-                ).last("LIMIT 1")
-        );
-
-        if (useInfo == null) {
-            useInfo = new UserUseInfo();
-            useInfo.setUserId(aiUseLog.getUserId());
-            userUseInfoService.save(useInfo);
-            useInfo = userUseInfoService.getOne(new QueryWrapper<UserUseInfo>().eq("user_id", aiUseLog.getUserId()));
-        }
+        UserUseInfo useInfo = userUseInfoService.getTodayUserUseInfoByUserId(aiUseLog.getUserId());
 
         // 通用字段更新
         Long inputLen = aiUseLog.getInputLen();

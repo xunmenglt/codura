@@ -11,17 +11,9 @@
   <component name="ChangeListManager">
     <list default="true" id="95b7f535-2e0b-4fb5-9209-6900033e9799" name="更改" comment="bug修复">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/codura-server/xunmeng-admin/src/test/java/com/xunmeng/DataCreateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/codura-server/xunmeng-admin/src/test/java/com/xunmeng/DataCreateTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/codura-server/xunmeng-common/src/main/java/com/xunmeng/common/utils/DateUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/codura-server/xunmeng-common/src/main/java/com/xunmeng/common/utils/DateUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/codura-server/xunmeng-system/src/main/java/com/xunmeng/system/service/impl/AiUseLogServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/codura-server/xunmeng-system/src/main/java/com/xunmeng/system/service/impl/AiUseLogServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/codura-ui/src/store/modules/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/codura-ui/src/store/modules/user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/docker/mysql/sql/init.sql" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/docker/mysql/sql/init.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/docker/server_build.bat" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/docker/server_build.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/docker/server_build.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/docker/server_build.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/docker/ui/nginx/conf.d/default.conf" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/docker/ui/nginx/conf.d/default.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xunmeng/codura/llm/openai/request/RequestBodyBaseOpenAI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xunmeng/codura/llm/openai/request/RequestBodyBaseOpenAI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xunmeng/codura/service/CodeCompletionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xunmeng/codura/service/CodeCompletionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/codura/templates/fillcode-use-chat-en.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/codura/templates/fillcode-use-chat-en.hbs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/codura/templates/fillcode-use-chat-zh.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/codura/templates/fillcode-use-chat-zh.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/codura-server/xunmeng-system/src/main/java/com/xunmeng/system/service/impl/UserUseInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/codura-server/xunmeng-system/src/main/java/com/xunmeng/system/service/impl/UserUseInfoServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,12 +46,6 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="Codura" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="Codura" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build" type="c8890929:TasksNode$1" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
@@ -103,27 +89,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/liuteng/研究生/个人项目/Codura/Codura-Intellij-idea-2022.2-2023.2-dev&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.3954023&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.xunmeng.codura.setting.configurable.CodeModelProiderConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.migrated.go.modules.settings": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "go.import.settings.migrated": "true",
+    "last_opened_file_path": "/Users/liuteng/研究生/个人项目/Codura/Codura-Intellij-idea-2022.2-2023.2-dev",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.3954023",
+    "settings.editor.selected.configurable": "com.xunmeng.codura.setting.configurable.CodeConfigurable",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/icons" />
@@ -147,7 +133,7 @@
       <recent name="com.xunmeng.codealien.llm.vllm.response" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.Codura-Intellij-idea-2022.2-2023.2-dev [runIde]">
+  <component name="RunManager" selected="Gradle.Codura-Intellij-idea-2022.2-2023.2-dev [buildPlugin]">
     <configuration default="true" type="DjangoTestsConfigurationType">
       <module name="codealien-idea-2022" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -372,9 +358,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.Codura-Intellij-idea-2022.2-2023.2-dev [runIde]" />
-        <item itemvalue="Gradle.Codura-Intellij-idea-2022.2-2023.2-dev [build]" />
         <item itemvalue="Gradle.Codura-Intellij-idea-2022.2-2023.2-dev [clean]" />
+        <item itemvalue="Gradle.Codura-Intellij-idea-2022.2-2023.2-dev [build]" />
+        <item itemvalue="Gradle.Codura-Intellij-idea-2022.2-2023.2-dev [runIde]" />
       </list>
     </recent_temporary>
   </component>
@@ -514,7 +500,7 @@
       <workItem from="1745248984375" duration="10587000" />
       <workItem from="1745383311712" duration="1657000" />
       <workItem from="1745719194650" duration="2319000" />
-      <workItem from="1745721980838" duration="2209000" />
+      <workItem from="1745721980838" duration="3812000" />
     </task>
     <task id="LOCAL-00001" summary="侧边栏对话 add">
       <created>1723193835119</created>

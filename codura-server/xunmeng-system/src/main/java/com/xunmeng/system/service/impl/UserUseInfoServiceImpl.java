@@ -44,26 +44,20 @@ public class UserUseInfoServiceImpl extends ServiceImpl<UserUseInfoMapper, UserU
 
 
     public UserUseInfo getTodayUserUseInfoByUserId(String userId) {
-        Date startOfDay = DateUtils.getStartOfDay();
-        Date endOfDay = DateUtils.getEndOfDay();
-        
         UserUseInfo useInfo = getOne(
-                new QueryWrapper<UserUseInfo>()
-                        .eq("user_id", userId)
-                        .ge("create_time",startOfDay)
-                        .le("create_time",endOfDay)
+                new QueryWrapper<UserUseInfo>().eq("user_id", userId).orderByDesc(
+                        "create_time"
+                ).last("LIMIT 1")
         );
-        if (useInfo==null){
-            useInfo=new UserUseInfo();
+        if (useInfo == null || (!DateUtils.isToday(useInfo.getCreateTime()))) {
+            useInfo = new UserUseInfo();
             useInfo.setUserId(userId);
             useInfo.setCreateTime(new Date());
             useInfo.setUpdateTime(new Date());
             save(useInfo);
-            useInfo = getOne(new QueryWrapper<UserUseInfo>()
-                    .eq("user_id", userId)
-                    .ge("create_time",startOfDay)
-                    .le("create_time",endOfDay)
-            );
+            useInfo = getOne( new QueryWrapper<UserUseInfo>().eq("user_id", userId).orderByDesc(
+                    "create_time"
+            ).last("LIMIT 1"));
         }
         return useInfo;
     }
@@ -92,21 +86,7 @@ public class UserUseInfoServiceImpl extends ServiceImpl<UserUseInfoMapper, UserU
 
     @Override
     public boolean updateUserUseEditorUseInfo(UserUseInfo useInfo) {
-        Date startOfDay = DateUtils.getStartOfDay();
-        Date endOfDay = DateUtils.getEndOfDay();
-        List<UserUseInfo> useInfos = list(
-                new QueryWrapper<UserUseInfo>()
-                        .eq("user_id", useInfo.getUserId())
-                        .ge("create_time",startOfDay)
-                        .le("create_time",endOfDay)
-        );
-        if (useInfos.size()<=0){
-            useInfo=new UserUseInfo();
-            useInfo.setUserId(useInfo.getUserId());
-            useInfo.setCreateTime(new Date());
-            useInfo.setUpdateTime(new Date());
-            save(useInfo);
-        }
+        getTodayUserUseInfoByUserId(useInfo.getUserId());
         int flag= userUseInfoMapper.updateUserUseEditorUseInfoByUserId(useInfo);
         return flag>=1;
     }
