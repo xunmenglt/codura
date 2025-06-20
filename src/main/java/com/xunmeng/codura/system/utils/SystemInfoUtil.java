@@ -34,16 +34,17 @@ public abstract class SystemInfoUtil {
             }
             NetworkInterface network = NetworkInterface.getByInetAddress(ip);
             byte[] macBytes = network.getHardwareAddress();
-            StringBuilder macAddress = new StringBuilder();
-            for (int i = 0; i < macBytes.length; i++) {
-                macAddress.append(String.format("%02X%s", macBytes[i], (i < macBytes.length - 1) ? ":" : ""));
+            if (macBytes!=null){
+                StringBuilder macAddress = new StringBuilder();
+                for (int i = 0; i < macBytes.length; i++) {
+                    macAddress.append(String.format("%02X%s", macBytes[i], (i < macBytes.length - 1) ? ":" : ""));
+                }
+                return macAddress.toString();
             }
-            return macAddress.toString();
         } catch (SocketException e) {
             e.printStackTrace();
-            return ":::";
-
         }
+        return ":::";
     }
     
     /**

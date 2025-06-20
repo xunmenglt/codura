@@ -24,7 +24,7 @@ public enum ModeType implements Type{
 
     /*开源模型LLama*/
     CODELLAMA_7B_CHAT("CodeLlama-7b-Instruct-hf"),
-    CODELLAMA_7B_FIM("CodeLlama-7b-hf"),
+    CODELLAMA_7B_FIM("codellama-7b"),
     CODELLAMA_13B_FIM("CodeLlama-13b-hf"),
     CODELLAMA_34B_FIM("CodeLlama-34b-hf"),
     

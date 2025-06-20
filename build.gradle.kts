@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.xunmeng"
-version = "1.0.0"
+version = "1.0.3"
 
 repositories {
     mavenCentral()
@@ -44,4 +44,7 @@ tasks {
         sinceBuild.set("222")
         untilBuild.set("232.*")
     }
+}
+tasks.buildSearchableOptions {
+    enabled = false
 }

@@ -11,9 +11,15 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class SSEHttpClient {
+
     public static final Logger logger = Logger.getLogger(SSEHttpClient.class.getName());
+
+    private static final Pattern EVENT_PATTERN = Pattern.compile("(?s)(.*?)\\r?\\n\\r?\\n");
+
     public static final String DATA_PREFIX = "data: ";
     private Call call;
 
@@ -70,58 +76,65 @@ public class SSEHttpClient {
 
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-                // 判断是否成功建立连接
                 if (response.code() < 200 || response.code() > 300) {
                     if (streamResquest != null) {
-                        streamResquest.getResponseCallable().onError(new RuntimeException("模型API服务接口请求异常,状态码: %d".formatted(response.code())));
+                        streamResquest.getResponseCallable().onError(
+                                new RuntimeException("模型API服务接口请求异常,状态码: %d".formatted(response.code())));
                     }
+                    return;
                 }
-                // 判断是否有可读流
+
                 if (response.body() == null) {
                     if (streamResquest != null) {
-                        streamResquest.getResponseCallable().onError(new RuntimeException("模型API服务不符合流式请求规范"));
+                        streamResquest.getResponseCallable().onError(
+                                new RuntimeException("模型API服务不符合流式请求规范"));
                     }
+                    return;
                 }
-                // 说明可以进行处理了
+
                 streamResquest.getResponseCallable().onStart(call);
                 StringBuilder buffer = new StringBuilder();
                 BufferedReader reader = new BufferedReader(response.body().charStream());
                 char[] charBuf = new char[256];
-                int offset = 0;
+                int offset;
+
                 try {
                     while ((offset = reader.read(charBuf)) != -1 && !call.isCanceled()) {
                         buffer.append(charBuf, 0, offset);
-                        int position = -1;
-                        String splitTig = "\n\n";
-                        while ((position = buffer.indexOf(splitTig)) != -1) {
-                            String line = buffer.substring(0, position);
-                            buffer.delete(0, position + splitTig.length());
+
+                        String fullBuffer = buffer.toString();
+                        Matcher matcher = EVENT_PATTERN.matcher(fullBuffer);
+                        int lastEnd = 0;
+
+                        while (matcher.find()) {
+                            String event = matcher.group(1);
                             try {
-                                JsonNode jsonNode = safeParseJsonResponse(line);
-                                if (jsonNode != null) streamResquest.getResponseCallable().onData(jsonNode);
-                                else {
-                                    return;
+                                JsonNode jsonNode = safeParseJsonResponse(event);
+                                if (jsonNode != null) {
+                                    streamResquest.getResponseCallable().onData(jsonNode);
                                 }
                             } catch (Exception e) {
-                                if (streamResquest != null) {
-                                    streamResquest.getResponseCallable().onError(e);
-                                }
+                                streamResquest.getResponseCallable().onError(e);
                             }
+                            lastEnd = matcher.end();
                         }
+
+                        // 移除已消费部分，保留不完整的
+                        buffer.delete(0, lastEnd);
                     }
+
                     if (!buffer.isEmpty()) {
                         try {
                             JsonNode jsonNode = safeParseJsonResponse(buffer.toString());
-                            if (jsonNode != null) streamResquest.getResponseCallable().onData(jsonNode);
-                        } catch (Exception e) {
-                            if (streamResquest != null) {
-                                streamResquest.getResponseCallable().onError(e);
+                            if (jsonNode != null) {
+                                streamResquest.getResponseCallable().onData(jsonNode);
                             }
+                        } catch (Exception e) {
+                            streamResquest.getResponseCallable().onError(e);
                         }
                     }
                 } catch (Exception e) {
-//                    System.out.println(e);
-//                    e.printStackTrace();
+                    streamResquest.getResponseCallable().onError(e);
                 } finally {
                     dispose();
                     if (streamResquest.getResponseCallable() != null) {
@@ -129,6 +142,7 @@ public class SSEHttpClient {
                     }
                 }
             }
+
         });
         return call;
     }
@@ -152,9 +166,11 @@ public class SSEHttpClient {
     }
 
     public void dispose() {
-        if (call != null) {
-            // 取消执行
-            call.cancel();
+        synchronized (call){
+            if (call != null && !call.isCanceled()) {
+                // 取消执行
+                call.cancel();
+            }
         }
     }
 }

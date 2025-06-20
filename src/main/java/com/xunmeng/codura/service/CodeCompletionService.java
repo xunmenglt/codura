@@ -343,12 +343,12 @@ public final class CodeCompletionService {
 
             @Override
             public void onError(Throwable throwable) {
-                logger.error(throwable);
-                if (call != null) {
+//                logger.error(throwable);
+                if (call != null && !call.isCanceled()) {
                     call.cancel();
                 }
                 codeAlienOnError(throwable.getMessage());
-                NotifyUtils.error(throwable.getMessage());
+//                NotifyUtils.error(throwable.getMessage());
                 ApplicationManager.getApplication().invokeLater(() -> {
                     clearRender();
                 });
