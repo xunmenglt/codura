@@ -16,10 +16,10 @@ import java.util.Scanner;
 
 public class CodeGenerator {
 
-    private static String db_url="jdbc:mysql://localhost:3306/devassist?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai";
+    private static String db_url="jdbc:mysql://localhost:3306/codrua?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai";
     private static String db_dirver="com.mysql.cj.jdbc.Driver";
     private static String db_user="root";
-    private static String db_password="lt204330";
+    private static String db_password="123456";
     private static String parentPage="com.xunmeng.system";
     private static String table_prefix="";
     /**

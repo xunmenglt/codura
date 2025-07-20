@@ -8,6 +8,8 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode
 public class BaseLog {
+    @JsonProperty(value = "requestId")
+    private String requestId; // Request ID
     @JsonProperty(value = "type")
     private LogType type;
     @JsonProperty(value = "id")

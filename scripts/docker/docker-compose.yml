@@ -31,7 +31,7 @@ services:
       - ./ui/nginx/conf.d:/etc/nginx/conf.d
     depends_on:
       - codura-server
-  
+
   codura-mysql:
     image: mysql:8.0.28
     container_name: codura-mysql

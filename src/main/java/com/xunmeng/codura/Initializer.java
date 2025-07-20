@@ -13,20 +13,25 @@ import java.util.zip.ZipInputStream;
 
 
 public class Initializer implements ApplicationComponent {
+    // 获取日志记录器
     private static final Logger logger = Logger.getInstance(PluginListener.class);
+    // 用户目录
     public static String userDir = "";
 
+    // 应用程序名称
     public static final String sourceDir=Constants.APP_NAME;
 
 
     @Override
     public void initComponent() {
         
+        // 初始化资源目录到用户目录
         initResourseToUser();
     }
 
     @Override
     public void disposeComponent() {
+        // 删除用户目录
         File file = new File(userDir);
         if(file.exists()){
             file.delete();
@@ -35,18 +40,23 @@ public class Initializer implements ApplicationComponent {
 
     // 初始化资源目录到用户目录
     private void initResourseToUser() {
+        // 获取工作目录
         File file = new File(Constants.WORKER_DIR);
         userDir = file.getPath();
+        // 创建用户临时目录和数据
         createUserTmpDirAndData();
     }
 
     private void createUserTmpDirAndData() {
+        // 获取用户目录
         File file = new File(userDir);
         try {
+            // 如果目录不存在，则创建
             if (!file.exists()) {
                 file.mkdirs();
                 logger.debug(String.format("The folder %s has been created", userDir));
             }
+            // 复制默认模板
             copyDefaultTmp();
         } catch (Exception e) {
             logger.error(String.format("Problem creating default templates %s", userDir));

@@ -71,7 +71,7 @@ public class UserUseInfoController extends BaseController {
     }
     
     @PostMapping("/updateUserUseEditorUseInfo")
-    @ApiOperation(value = "根据用户ID获取用户周使用情况")
+    @ApiOperation(value = "更新信息")
     public AjaxResult updateUserUseEditorUseInfo(@RequestBody UserUseInfo useInfo){
         if (!useInfo.getUserId().equals(getUserId())){
             return AjaxResult.error("当前操作信息非本用户所属");
@@ -81,4 +81,31 @@ public class UserUseInfoController extends BaseController {
         AjaxResult result = toAjax(flag);
         return result;
     }
+
+
+    @GetMapping("/ai-use-times")
+    @ApiOperation(value = "获取当前用户AI使用次数")
+    public AjaxResult getAiUseTimes() {
+        String userId = getUserId();
+        long useTimes = userUseInfoService.getAiUseTimesByUserId(userId);
+        return AjaxResult.success(useTimes);
+    }
+
+    @GetMapping("/ai-usage-time")
+    @ApiOperation(value = "获取当前用户AI使用总时长")
+    public AjaxResult getAiUsageTime() {
+        String userId = getUserId();
+        long totalTime = userUseInfoService.getAiUsageTimeByUserId(userId);
+        return AjaxResult.success(totalTime);
+    }
+
+    @GetMapping("/ai-token-count")
+    @ApiOperation(value = "获取当前用户AI Token消耗总量")
+    public AjaxResult getAiTokenCount() {
+        String userId = getUserId();
+        long totalTokens = userUseInfoService.getAiTokenCountByUserId(userId);
+        return AjaxResult.success(totalTokens);
+    }
+
+
 }

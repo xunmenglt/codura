@@ -48,27 +48,27 @@ public class AiUseLogServiceImpl extends ServiceImpl<AiUseLogMapper, AiUseLog> i
     public boolean addAiUseLog(AiUseLog aiUseLog) {
         // 将日志保存到服务器相关目录中
         savelog2Dir(aiUseLog);
-        // 解析aiuse日志内容，记录到数据表中
-        if (aiUseLog.getEventType()!=null){
-            aiUseLog.setInputLen(0L);
-            aiUseLog.setInputTokens(0L);
-            aiUseLog.setOutputLen(0L);
-            aiUseLog.setOutputTokens(0L);
-            if (aiUseLog.getInputContent()!=null && aiUseLog.getInputContent().length()>0){
-                Long inputContentLen=Long.valueOf(aiUseLog.getInputContent()==null?0:aiUseLog.getInputContent().length());
-                aiUseLog.setInputLen(inputContentLen);
-                Iterator<Word> words = tokenizerEngine.parse(aiUseLog.getInputContent());
-                int size = CollUtil.size(words);
-                aiUseLog.setInputTokens(Long.valueOf(size));
-            }
-            if (aiUseLog.getOutputContent()!=null && aiUseLog.getOutputContent().length()>0){
-                Long ouputContentLen=Long.valueOf(aiUseLog.getOutputContent()==null?0:aiUseLog.getOutputContent().length());
-                aiUseLog.setOutputLen(ouputContentLen);
-                Iterator<Word> words = tokenizerEngine.parse(aiUseLog.getOutputContent());
-                int size = CollUtil.size(words);
-                aiUseLog.setOutputTokens(Long.valueOf(size));
-            }
-        }
+//        // 解析aiuse日志内容，记录到数据表中
+//        if (aiUseLog.getEventType()!=null){
+////            aiUseLog.setInputLen(0L);
+////            aiUseLog.setInputTokens(0L);
+////            aiUseLog.setOutputLen(0L);
+////            aiUseLog.setOutputTokens(0L);
+//            if (aiUseLog.getInputContent()!=null && aiUseLog.getInputContent().length()>0&& aiUseLog.getInputTokens() == null){
+////                Long inputContentLen=Long.valueOf(aiUseLog.getInputContent()==null?0:aiUseLog.getInputContent().length());
+////                aiUseLog.setInputLen(inputContentLen);
+//                Iterator<Word> words = tokenizerEngine.parse(aiUseLog.getInputContent());
+//                int size = CollUtil.size(words);
+//                aiUseLog.setInputTokens(Long.valueOf(size));
+//            }
+//            if (aiUseLog.getOutputContent()!=null && aiUseLog.getOutputContent().length()>0&& aiUseLog.getOutputTokens() == null){
+////                Long ouputContentLen=Long.valueOf(aiUseLog.getOutputContent()==null?0:aiUseLog.getOutputContent().length());
+////                aiUseLog.setOutputLen(ouputContentLen);
+//                Iterator<Word> words = tokenizerEngine.parse(aiUseLog.getOutputContent());
+//                int size = CollUtil.size(words);
+//                aiUseLog.setOutputTokens(Long.valueOf(size));
+//            }
+//        }
         aiUseLog.setInputContent(null);
         aiUseLog.setOutputContent(null);
         boolean a = aiUseLogMapper.insert(aiUseLog)>0;

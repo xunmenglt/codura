@@ -124,7 +124,7 @@ public class SysUserController extends BaseController {
     @ApiOperation(value = "状态修改")
     @Log(title = "用户管理", businessType = BusinessType.UPDATE)
     @PreAuthorize("@ss.hasPermi('system:user:edit')")
-    @PostMapping("/changeStatus")
+    @PutMapping("/changeStatus")
     public AjaxResult changeStatus(@RequestBody SysUser user)
     {
         userService.checkUserAllowed(user);

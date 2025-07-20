@@ -210,18 +210,23 @@ html.dark .user-message {
 }
 
 
+/* 滚动条整体样式 */
 ::-webkit-scrollbar {
-    width: 2px;
-    /* 垂直滚动条的宽度 */
+    width: 10px;          /* 滚动条更粗，更明显 */
 }
 
-/* 设置滚动条滑块的样式 */
+/* 滑块 */
 ::-webkit-scrollbar-thumb {
-    background-color: #ccc;
-    /* 滑块的背景颜色 */
+    background-color: rgba(100, 100, 100, 0.6); /* 深灰半透明，更显眼 */
     border-radius: 6px;
-    /* 滑块的圆角 */
+    border: 2px solid rgba(255, 255, 255, 0.3); /* 加浅色边框，立体感 */
 }
+
+/* 滚动条轨道 */
+::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.1); /* 滚动条背景，淡灰色 */
+}
+
 
 ::-webkit-scrollbar-button {
     display: none;

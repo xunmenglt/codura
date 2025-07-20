@@ -41,4 +41,11 @@ public interface IUserUseInfoService extends IService<UserUseInfo> {
     UserUseInfo getPlugInUsagePercentage();
 
     List<UserUseInfo> getActiveUserLeaderboard(String startTime, String endTime);
+
+    long getAiUseTimesByUserId(String userId);
+
+    long getAiUsageTimeByUserId(String userId);
+
+    long getAiTokenCountByUserId(String userId);
+
 }

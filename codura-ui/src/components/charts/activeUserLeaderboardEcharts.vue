@@ -5,9 +5,15 @@
 <script>
 import * as echarts from 'echarts';
 import { getPlugInUsagePercentage } from '@/api/chart';
-
+import {getUserAllInfo } from '@/api/uselog/userUseInfo';
 export default {
   name: 'activeUserLeaderboardEcharts',
+  props: {
+    isSingleUser: {
+      type: Boolean,
+      default: false
+    }
+  },
   data() {
     return {
       // option配置
@@ -20,7 +26,10 @@ export default {
   methods: {
     async initCharts() {
       // 获取数据
-      const res = await getPlugInUsagePercentage();
+      const res = this.isSingleUser
+          ? await getUserAllInfo()
+          : await getPlugInUsagePercentage();
+
       if (res && res.code === 200) {
         this.userInfo = res.data;
       }

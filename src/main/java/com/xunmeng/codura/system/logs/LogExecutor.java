@@ -119,12 +119,11 @@ public final class LogExecutor implements Disposable {
         dolog(LogType.WARNING,log);
     }
 
-    public void aiuse(AIUsageType eventType, List<ConversationMessage> inputContent, String outputContent){
-        AIUsageLog log = LogUtil.createAiUseLog(eventType,inputContent,outputContent);
+    public void aiuse(AIUsageType eventType, List<ConversationMessage> inputContent, String outputContent,String requestId){
+        AIUsageLog log = LogUtil.createAiUseLog(eventType,inputContent,outputContent,requestId);
         dolog(LogType.INFO,log);
     }
-    
-    
+
     private BufferedWriter getWriterByLogType(LogType logType){
         BufferedWriter writer=null;
         if (logType==LogType.INFO){
@@ -161,18 +160,24 @@ public final class LogExecutor implements Disposable {
     }
     
     private void writeLog(BufferedWriter writer,BaseLog log){
+        //判断writer是否为空，如果为空则直接返回
         if (writer==null){
             return;
         }
         String logstr;
         try {
+            //将log对象转换为json字符串
             logstr = JsonUtils.convert2Json(log);
         } catch (JsonProcessingException e) {
+            //如果转换失败则直接返回
             return;
         }
+
+        //使用HttpClient的scheduler提交一个任务，将log对象添加到AiUseLogAPI中
         HttpClient.scheduler.submit(()->{
             AiUseLogAPI.add(log);
         });
+        //将log字符串写入writer中
         writeLog(writer,logstr);
     }
     

@@ -32,7 +32,7 @@ public abstract class LogUtil {
     public static BaseLog createDefaultErrorLog(){
         BaseLog log = new BaseLog();
         log.setId(getNextLogId());
-        log.setType(LogType.INFO);
+        log.setType(LogType.ERROR);
         log.setUserId(getUserID());
         log.setIdeVersion(SystemInfoUtil.ideVersion());
         log.setTimestamp(System.currentTimeMillis());
@@ -43,7 +43,7 @@ public abstract class LogUtil {
     public static BaseLog createDefaultWarningLog(){
         BaseLog log = new BaseLog();
         log.setId(getNextLogId());
-        log.setType(LogType.INFO);
+        log.setType(LogType.WARNING);
         log.setUserId(getUserID());
         log.setIdeVersion(SystemInfoUtil.ideVersion());
         log.setTimestamp(System.currentTimeMillis());
@@ -72,11 +72,12 @@ public abstract class LogUtil {
         return log;
     }
 
-    public static AIUsageLog createAiUseLog(AIUsageType eventType, List<ConversationMessage> inputContent, String outputContent){
+    public static AIUsageLog createAiUseLog(AIUsageType eventType, List<ConversationMessage> inputContent, String outputContent,String requestId){
         AIUsageLog log = createDefaultAiUseLog();
         log.setEventType(eventType);
         log.setInputContent(inputContent);
         log.setOutputContent(outputContent);
+        log.setRequestId(requestId);
         return log;
     }
     

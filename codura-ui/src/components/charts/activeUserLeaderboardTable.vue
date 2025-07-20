@@ -1,6 +1,11 @@
 <template>
-  <div class="sticky-table">
+  <div >
     <el-table :data="useInfoList" style="width: 100%">
+      <el-table-column label="序号" align="center" type="index" width="50">
+        <template slot-scope="scope">
+          {{ (searchParam.pageNum - 1) * searchParam.pageSize + scope.$index + 1 }}
+        </template>
+      </el-table-column>
       <el-table-column prop="userId" label="员工编号" width="180"></el-table-column>
       <el-table-column prop="nickName" label="姓名" width="180"></el-table-column>
       <el-table-column prop="codeCompletionQaTimes" label="AI使用次数" width="180"></el-table-column>
@@ -40,17 +45,28 @@
         </template>
       </el-table-column>
     </el-table>
+
+    <pagination
+        v-show="total>0"
+        :total="total"
+        :page.sync="searchParam.pageNum"
+        :limit.sync="searchParam.pageSize"
+        @pagination="flashData"
+    />
   </div>
 </template>
 
 <script>
 import { getActiveUserLeaderboard } from '@/api/chart'
 import { autoFormatNumber,autoFormatTime }from '@/utils/xunmeng'
+import Pagination from '@/components/Pagination'
 export default {
   name: 'activeUserLeaderboardTable',
+  components: {Pagination},
   
   data() {
     return {
+      total:0,
       useInfoList: [
       ],
       searchParam:{
@@ -68,11 +84,17 @@ export default {
   },
   methods: {
     async flashData(){
+
       const res=await getActiveUserLeaderboard(this.searchParam)
+
       if(res && res.code==200){
         this.useInfoList=res.rows
+        this.total = res.total
       }
+
+
     },
+
     _autoFormatNumber(data){
       return autoFormatNumber(data)
     },

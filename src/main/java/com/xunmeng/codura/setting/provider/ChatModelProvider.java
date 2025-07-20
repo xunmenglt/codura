@@ -1,5 +1,6 @@
 package com.xunmeng.codura.setting.provider;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.xunmeng.codura.constants.Constants;
 import com.xunmeng.codura.constants.enums.ModeType;
 import com.xunmeng.codura.constants.enums.OpenApiType;
@@ -11,13 +12,14 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper=true)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ChatModelProvider extends ModelProvider{
     public static ChatModelProvider defaultProvider() {
         ChatModelProvider chatModelProvider = new ChatModelProvider();
         chatModelProvider.setLabel("聊天模型");
         chatModelProvider.setType(ProviderType.CHAT);
         chatModelProvider.setOpenApiType(OpenApiType.OPENAI);
-        chatModelProvider.setModelName(ModeType.GPT_4_O_MINI);
+        chatModelProvider.setModelName("gpt-3.5-turbo");
         chatModelProvider.setHostName(Constants.HOST);
         chatModelProvider.setProtocol(ProtocolType.HTTP);
         chatModelProvider.setPort(Constants.PORT);

@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.xunmeng"
-version = "1.0.0"
+version = "1.1.0"
 
 repositories {
     mavenCentral()
@@ -21,6 +21,8 @@ dependencies{
     implementation("com.squareup.okhttp3:okhttp:4.9.1")
     implementation("org.apache.commons:commons-lang3:3.15.0")
     implementation("com.github.jknack:handlebars:4.4.0")
+    implementation( "redis.clients:jedis:5.1.0")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.9.23")
 }
 
 // Configure Gradle IntelliJ Plugin
@@ -35,6 +37,13 @@ tasks.named("test"){
     enabled = false
 }
 tasks {
+    withType<JavaCompile> {
+        options.encoding = "UTF-8"
+    }
+
+    runIde {
+        jvmArgs = listOf("-Dfile.encoding=UTF-8")
+    }
     // Set the JVM compatibility versions
     withType<JavaCompile> {
         sourceCompatibility = "17"
@@ -44,4 +53,7 @@ tasks {
         sinceBuild.set("222")
         untilBuild.set("232.*")
     }
+}
+tasks.buildSearchableOptions {
+    enabled = false
 }

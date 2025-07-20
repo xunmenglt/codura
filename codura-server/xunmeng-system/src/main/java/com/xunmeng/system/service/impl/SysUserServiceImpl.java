@@ -112,7 +112,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 
     @Override
     public int updateUserStatus(SysUser user) {
-        return userMapper.updateById(user);
+        return userMapper.updateUserStatus(user);
     }
 
     @Override

@@ -16,7 +16,7 @@ xunmeng:
 lucene:
   # 索引库存储目录
   dir: /var/data/lucene/indexdata
-  
+
 chat:
   baseUrl: http://localhost:9888
 

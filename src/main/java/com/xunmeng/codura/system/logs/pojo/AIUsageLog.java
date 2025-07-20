@@ -17,4 +17,6 @@ public class AIUsageLog extends BaseLog {
     private List<ConversationMessage> inputContent; // Input content as a dictionary
     @JsonProperty(value = "outputContent")
     private String outputContent; // Model's output content
+
+
 }

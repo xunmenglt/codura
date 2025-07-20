@@ -19,7 +19,7 @@ chat:
 # 开发环境配置
 server:
   # 服务器的HTTP端口，默认为8080
-  port: 8080
+  port: 8079
   servlet:
     # 应用的访问路径
     context-path: /
@@ -73,11 +73,11 @@ spring:
     # 地址
     host: 127.0.0.1
     # 端口，默认为6379
-    port: 6380
+    port: 6379
     # 数据库索引
     database: 0
     # 密码
-    password: codura
+    password: 123456
     # 连接超时时间
     timeout: 10s
     lettuce:
@@ -125,3 +125,12 @@ swagger:
   url: http://localhost/doc.html
   email: 3339372755@qq.com
   version: 3.0
+
+
+llmgate:
+  host: 127.0.0.1
+  port: 8081
+  prefix: /_api
+  protocol: http
+  redisPassword: "123456"
+  redisPort: 6379

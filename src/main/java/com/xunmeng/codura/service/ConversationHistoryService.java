@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.intellij.openapi.components.Service;
 import com.xunmeng.codura.call.CallBack;
 import com.xunmeng.codura.constants.Constants;
-import com.xunmeng.codura.constants.enums.ModeType;
 import com.xunmeng.codura.net.SSEHttpClient;
 import com.xunmeng.codura.net.constants.Method;
 import com.xunmeng.codura.net.options.RequestOptions;
@@ -18,8 +17,8 @@ import com.xunmeng.codura.pojo.Conversation;
 import com.xunmeng.codura.pojo.ConversationMessage;
 import com.xunmeng.codura.setting.provider.ChatConfigProvider;
 import com.xunmeng.codura.setting.provider.ChatModelProvider;
-import com.xunmeng.codura.setting.state.CodeState;
-import com.xunmeng.codura.setting.state.CodeStateService;
+import com.xunmeng.codura.setting.provider.LlmGateConfigProvider;
+import com.xunmeng.codura.setting.provider.LlmGateUrlProvider;
 import com.xunmeng.codura.utils.CodeBundle;
 import com.xunmeng.codura.utils.JsonUtils;
 import okhttp3.Call;
@@ -31,7 +30,7 @@ import java.util.List;
 @Service
 public final class ConversationHistoryService {
     public static String TITLE_GENERATION_PROMPT_MESAGE= CodeBundle.message("code.chat.TITLE_GENERATION_PROMPT_MESAGE");
-    private CodeState codeState = CodeStateService.settings();
+//    private CodeState codeState = CodeStateService.settings();
     private Call call;
     
 
@@ -42,18 +41,25 @@ public final class ConversationHistoryService {
         }
         messageList.add(new Message(Constants.USER,TITLE_GENERATION_PROMPT_MESAGE));
         StreamRequestBodyChatOpenAI requestBody = new StreamRequestBodyChatOpenAI(messageList);
-        ChatModelProvider provider= codeState.getChatModelProvider();
-        ChatConfigProvider chatConfigProvider = codeState.getChatConfigProvider();
-        ModeType modelName = provider.getModelName();
-        requestBody.setModel(modelName.V().toString());
+//        ChatModelProvider provider= codeState.getChatModelProvider();
+
+        ChatConfigProvider chatConfigProvider = RemoteConfigService.fetchChatConfigCached();
+        ChatModelProvider provider= RemoteConfigService.getChatModelProviderCached();
+        LlmGateConfigProvider llmgate = RemoteConfigService.fetchLlmGateConfigCached();
+        LlmGateUrlProvider llmGateUrl = RemoteConfigService.fetchLlmGateUrlCached();
+        String modelName = provider.getModelName();
+        requestBody.setModel(modelName);
         requestBody.setMax_tokens(100);
         requestBody.setTemperature(chatConfigProvider.getTemperature());
-
+        int port = llmgate.getServer().getPort();
+        String path = llmgate.getServer().getPrefix()+ provider.getPath();
+        String host = llmGateUrl.getHost();
+        String protocol = llmGateUrl.getProtocol();
         RequestOptions options = new RequestOptions();
-        options.setHostname(provider.getHostName())
-                .setProtocol(provider.getProtocol().V().toString())
-                .setPort(provider.getPort())
-                .setPath(provider.getPath())
+        options.setHostname(host)
+                .setProtocol(protocol)
+                .setPort(port)
+                .setPath(path)
                 .setMethod(Method.POST)
                 .addHeader("Content-Type","application/json");
         if (!StringUtils.isEmpty(provider.getApiKey())){

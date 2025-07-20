@@ -150,4 +150,55 @@ public class UserUseInfoServiceImpl extends ServiceImpl<UserUseInfoMapper, UserU
     public List<UserUseInfo> getActiveUserLeaderboard(String startTime, String endTime) {
         return userUseInfoMapper.selectActiveUserLeaderboard(startTime,endTime);
     }
+
+    @Override
+    public long getAiUseTimesByUserId(String userId) {
+        UserUseInfo info = userUseInfoMapper.selectUserUseInfoByIdSum(userId);
+        if (info == null) {
+            return 0L;
+        }
+        return info.getCodeCompletionQaTimes();
+    }
+
+    @Override
+    public long getAiUsageTimeByUserId(String userId) {
+        UserUseInfo info = userUseInfoMapper.selectUserUseInfoByIdSum(userId);
+        if (info == null) {
+            return 0L;
+        }
+        return info.getEditorUsageTime();
+    }
+
+
+    @Override
+    public long getAiTokenCountByUserId(String userId) {
+        UserUseInfo info = userUseInfoMapper.selectUserUseInfoByIdSum(userId);
+        if (info == null) {
+            return 0L;
+        }
+
+        return sumTokenFields(info);
+    }
+
+    private long sumTokenFields(UserUseInfo info) {
+        return safeLong(info.getCodeCompletionTokens())
+                + safeLong(info.getCodeCompletionQaTokens())
+                + safeLong(info.getTestCaseWritingTokens())
+                + safeLong(info.getVariableTypeDeclarationTokens())
+                + safeLong(info.getCodeExplanationTokens())
+                + safeLong(info.getDcoumentionWritingTokens())
+                + safeLong(info.getCodeRefactoringTokens())
+                + safeLong(info.getQucikCodeInsertionTokens());
+    }
+    private long safeLong(Long val) {
+        return val != null ? val : 0L;
+    }
+    private int toInt(Integer value) {
+        return value == null ? 0 : value;
+    }
+
+    private long toLong(Integer value) {
+        return value == null ? 0L : value.longValue();
+    }
+
 }

@@ -27,17 +27,31 @@ public class SystemInfoProvider implements Provider{
 
     public static SystemInfoProvider getDefaultProvider() {
         SystemInfoProvider systemInfoProvider = new SystemInfoProvider();
-        systemInfoProvider.base="/app";
-        systemInfoProvider.host="175.178.58.161";
-        systemInfoProvider.port=80;
+        systemInfoProvider.base="";
+        systemInfoProvider.host="127.0.0.1";
+        systemInfoProvider.port=8082;
         systemInfoProvider.protocol=ProtocolType.HTTP;
         return systemInfoProvider;
     }
-    
-    public String getRequestBaseUrl(){
-        String url = "%s://%s:%s%s".formatted(protocol.V(), host, port, StringUtils.isEmpty(base)?"":base);
-        return url;
+
+    public String getRequestBaseUrl() {
+        String fixedBase = "";
+
+        if (!StringUtils.isEmpty(base) && !"/".equals(base.trim())) {
+            // 去掉首尾的 /
+            String cleanedBase = base.trim();
+            if (cleanedBase.startsWith("/")) {
+                cleanedBase = cleanedBase.substring(1);
+            }
+            if (cleanedBase.endsWith("/")) {
+                cleanedBase = cleanedBase.substring(0, cleanedBase.length() - 1);
+            }
+            fixedBase = "/" + cleanedBase;
+        }
+
+        return "%s://%s:%s%s".formatted(protocol.V(), host, port, fixedBase);
     }
+
 
     @Override
     public String ID() {

@@ -9,7 +9,6 @@ import com.intellij.openapi.editor.Editor;
 import com.intellij.util.concurrency.AppExecutorUtil;
 import com.xunmeng.codura.constants.Constants;
 import com.xunmeng.codura.constants.Languages;
-import com.xunmeng.codura.constants.enums.ModeType;
 import com.xunmeng.codura.net.SSEHttpClient;
 import com.xunmeng.codura.net.constants.Method;
 import com.xunmeng.codura.net.options.RequestOptions;
@@ -22,8 +21,10 @@ import com.xunmeng.codura.pojo.ConversationMessage;
 import com.xunmeng.codura.pojo.LanguageType;
 import com.xunmeng.codura.setting.provider.ChatConfigProvider;
 import com.xunmeng.codura.setting.provider.ChatModelProvider;
+import com.xunmeng.codura.setting.provider.LlmGateConfigProvider;
+import com.xunmeng.codura.setting.provider.LlmGateUrlProvider;
 import com.xunmeng.codura.setting.state.CodeState;
-import com.xunmeng.codura.setting.state.CodeStateService;
+import com.xunmeng.codura.setting.state.SystemInfoStateService;
 import com.xunmeng.codura.system.logs.LogExecutor;
 import com.xunmeng.codura.system.logs.constans.AIUsageType;
 import com.xunmeng.codura.toolwin.CodeToolWindowFactory;
@@ -73,9 +74,9 @@ public final class ChatService {
     // 当前事件雷系
     private AIUsageType usageType;
     
-    
+    private String requestId;
     public ChatService(){
-        codeState = CodeStateService.settings();
+//        codeState = CodeStateService.settings();
         templateService=DefaultService.getServiceByClass(TemplateService.class);
     }
     
@@ -178,25 +179,42 @@ public final class ChatService {
     }
 
     private StreamResquest buildStreamRequest(List<ConversationMessage> conversationMessages, Consumer<Call> onEnd) {
-        ChatConfigProvider chatConfigProvider = codeState.getChatConfigProvider();
+
+        ChatConfigProvider chatConfigProvider = RemoteConfigService.fetchChatConfigCached();
+
         List<Message> messageList=new ArrayList<>();
         int maxMessageLength=chatConfigProvider.getMessageLength()==null?3:chatConfigProvider.getMessageLength();
+
         for(int i=conversationMessages.size()-1;i>=0&&i>=(conversationMessages.size()-maxMessageLength+1);i--){
             ConversationMessage message = conversationMessages.get(i);
             messageList.add(0,new Message(message.getRole(),message.getContent()));
         }
+
         StreamRequestBodyChatOpenAI requestBody = new StreamRequestBodyChatOpenAI(messageList);
-        ChatModelProvider provider= codeState.getChatModelProvider();
-        ModeType modelName = provider.getModelName();
-        requestBody.setModel(modelName.V().toString());
+
+        ChatModelProvider provider= RemoteConfigService.getChatModelProviderCached();
+        LlmGateConfigProvider llmgate = RemoteConfigService.fetchLlmGateConfigCached();
+        LlmGateUrlProvider llmGateUrl = RemoteConfigService.fetchLlmGateUrlCached();
+
+        String modelName = provider.getModelName();
+        requestBody.setModel(modelName);
         requestBody.setMax_tokens(chatConfigProvider.getNumPredict());
         requestBody.setTemperature(chatConfigProvider.getTemperature());
-        
+        //标记请求
+        requestId = UUID.randomUUID().toString();
+        requestBody.setRequestId(requestId);
+
         RequestOptions options = new RequestOptions();
-        options.setHostname(provider.getHostName())
-                .setProtocol(provider.getProtocol().V().toString())
-                .setPort(provider.getPort())
-                .setPath(provider.getPath())
+        //获取网关配置
+        int port = llmgate.getServer().getPort();
+        String path = llmgate.getServer().getPrefix()+ provider.getPath();
+        String host = llmGateUrl.getHost();
+        String protocol = llmGateUrl.getProtocol();
+
+        options.setHostname(host)
+                .setProtocol(protocol)
+                .setPort(port)
+                .setPath(path)
                 .setMethod(Method.POST)
                 .addHeader("Content-Type","application/json");
         if (!StringUtils.isEmpty(provider.getApiKey())){
@@ -263,7 +281,9 @@ public final class ChatService {
                 // 记录日志
                 try {
                     if(conversationMessage.getContent()!=null && !conversationMessage.getContent().equals("")){
-                        LogExecutor.me().aiuse(usageType,inputMessages,conversationMessage.getContent());
+
+                        LogExecutor.me().aiuse(usageType,inputMessages,conversationMessage.getContent(),requestId);
+
                     }
                 }finally {
                     chatPane.sendOnEnd(conversationMessage);

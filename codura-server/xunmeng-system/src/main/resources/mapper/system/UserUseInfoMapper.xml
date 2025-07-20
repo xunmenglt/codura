@@ -100,7 +100,7 @@
             SUM(ctrl_v_count) AS ctrl_v_count,
         FROM user_use_info
     </select>
-    
+    <!-- 统计单个用户各字段总和 -->
     <select id="selectUserUseInfoByIdSum" resultMap="BaseResultMap" parameterType="String">
         SELECT
             NULL AS id,

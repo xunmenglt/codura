@@ -4,6 +4,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.xunmeng.codura.net.HttpClient;
 import com.xunmeng.codura.net.constants.Method;
+import com.xunmeng.codura.service.RemoteConfigService;
+import com.xunmeng.codura.setting.provider.LlmGateLogProvider;
 import com.xunmeng.codura.setting.state.SystemInfoStateService;
 import com.xunmeng.codura.system.URLConstants;
 import com.xunmeng.codura.system.logs.pojo.AIUsageLog;
@@ -21,9 +23,16 @@ public class AiUseLogAPI {
         String url = SystemInfoStateService.settings().getSystemInfoProvider().getRequestBaseUrl();
         url = url + URLConstants.AIUSELOG_ADD;
         String token = SystemInfoStateService.settings().getUserInfoProvider().getUser().getToken();
+
+        String requestId = log.getRequestId();
+        LlmGateLogProvider llmGateLogProvider = RemoteConfigService.fetchLogByRequestId(requestId);
+
         /*判断是否有token*/
         // todo WIN:UserNotLoginInError
-        if (token == null || token.equals("")) return null;
+        if (token == null || token.equals(""))
+            return null;
+
+        
         Map<String, String> headers = new HashMap<>();
         headers.put("Authorization", "Bearer " + token);
         //构建请求参数
@@ -31,9 +40,15 @@ public class AiUseLogAPI {
         Map<String, Object> data = new HashMap<>();
         try {
             data = objectMapper.readValue(objectMapper.writeValueAsString(log), Map.class);
+
             if (log instanceof AIUsageLog) {
                 String inputContent = objectMapper.writeValueAsString(((AIUsageLog) log).getInputContent());
                 data.put("inputContent", inputContent);
+                data.put("inputLen",llmGateLogProvider.getInputLen());
+                data.put("outputLen",llmGateLogProvider.getOutputLen());
+                data.put("inputTokens",llmGateLogProvider.getInputTokens());
+                data.put("outputTokens",llmGateLogProvider.getOutputTokens());
+                //后续需要什么都可以从llmGateLogProvider获得；比如模型名称，apikey等；
             }
         } catch (JsonProcessingException e) {
             // todo WIN:SystemRunTimeError

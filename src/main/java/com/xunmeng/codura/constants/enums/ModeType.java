@@ -1,6 +1,9 @@
 package com.xunmeng.codura.constants.enums;
 
-public enum ModeType implements Type{
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+
+public enum ModeType implements Type {
     /*开源模型Qwen*/
     QWEN_7B_CHAT("Qwen-7B-Chat"),
     QWEN2_7B_CHAT("Qwen2-7B-Instruct"),
@@ -19,29 +22,47 @@ public enum ModeType implements Type{
     QWEN_CODER_2_5_1P5B("Qwen2.5-Coder-1.5B"),
     QWEN_CODER_2_5_7B("Qwen2.5-Coder-7B"),
     QWEN_CODER_2_5_32B("Qwen2.5-Coder-32B"),
+
+    QWEN3_32B("qwen3-32b"),
+
+
     DEEPSEEK_R1("deepseek-reasoner"),
     DEEPSEEK_CHAT("deepseek-chat"),
-
+    DEEPSEEK_V3("deepseek-v3"),
+    DEEPSEEK("deepseek"),
     /*开源模型LLama*/
     CODELLAMA_7B_CHAT("CodeLlama-7b-Instruct-hf"),
-    CODELLAMA_7B_FIM("CodeLlama-7b-hf"),
+    CODELLAMA_7B_FIM("codellama-7b"),
     CODELLAMA_13B_FIM("CodeLlama-13b-hf"),
     CODELLAMA_34B_FIM("CodeLlama-34b-hf"),
-    
     /*闭源模型*/
     GPT_3_5_TURBO("gpt-3.5-turbo"),
     GPT_4_O("gpt-4o"),
     GPT_4_O_MINI("gpt-4o-mini");
-    
 
     private final String type;
 
-    ModeType(String type){
-        this.type=type;
+    ModeType(String type) {
+        this.type = type;
+    }
+
+    @JsonValue
+    public String getType() {
+        return type;
     }
 
     @Override
     public Object V() {
         return type;
+    }
+
+    @JsonCreator
+    public static ModeType fromString(String value) {
+        for (ModeType item : ModeType.values()) {
+            if (item.type.equalsIgnoreCase(value)) {
+                return item;
+            }
+        }
+        throw new IllegalArgumentException("Unknown ModeType: " + value);
     }
 }

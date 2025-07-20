@@ -32,24 +32,27 @@ public class ChatWebView implements Disposable {
     public static final Logger logger=Logger.getInstance(ChatWebView.class);
 
     private String jsPoolSize = "200";
-    
+
     private JBCefBrowser webView;
-    
+
     private FromChatHandler fromChatHandler;
-    
+
     private static String tmpPath="";
-    
+
+    private JBCefJSQuery myJSQueryOpenInBrowser;
+    private JBCefJSQuery myJSQueryOpenInBrowserRedirectHyperlink;
+
     static {
-        File file = new File(System.getProperty("user.home"), ".codealien/web");
+        File file = new File(System.getProperty("user.home"), ".codura/web");
         tmpPath=file.getPath();
     }
-    
-    
+
+
     public ChatWebView(FromChatHandler fromChatHandler){
         this.fromChatHandler=fromChatHandler;
         System.setProperty("ide.browser.jcef.jsQueryPoolSize", jsPoolSize);
     }
-    
+
     public synchronized JBCefBrowser getLazyWebView(){
         if (webView==null){
             webView=createWebView();
@@ -60,7 +63,7 @@ public class ChatWebView implements Disposable {
     private JBCefBrowser createWebView() {
         String osName = System.getProperty("os.name").toLowerCase();
         boolean useOsr=false;
-        
+
         if (osName.contains("mac") || osName.contains("darwin")) {
             // 对于 macOS，不使用离屏渲染
         } else if (osName.contains("win")) {
@@ -87,11 +90,11 @@ public class ChatWebView implements Disposable {
                 JBCefClient.Properties.JS_QUERY_POOL_SIZE,
                 jsPoolSize
         );
-        
+
         // 在应用程序初始化时注册SchemeHandlerFactory 以便处理对应的协议程序
 
         CefApp.getInstance().registerSchemeHandlerFactory("http", "codura", new RequestHandlerFactory());
-        JBCefJSQuery myJSQueryOpenInBrowser = JBCefJSQuery.create((JBCefBrowserBase)browser);
+        myJSQueryOpenInBrowser = JBCefJSQuery.create((JBCefBrowserBase) browser);
         myJSQueryOpenInBrowser.addHandler((msg)->{
             // 用于监听视图发送过来的信息
             logger.info("===>client message:"+msg);
@@ -108,23 +111,21 @@ public class ChatWebView implements Disposable {
             return null;
         });
 
-        JBCefJSQuery myJSQueryOpenInBrowserRedirectHyperlink = JBCefJSQuery.create((JBCefBrowserBase)browser);
-        myJSQueryOpenInBrowserRedirectHyperlink.addHandler((href)->{
-            if(!StringUtils.isEmpty(href)) {
+        myJSQueryOpenInBrowserRedirectHyperlink = JBCefJSQuery.create((JBCefBrowserBase) browser);
+        myJSQueryOpenInBrowserRedirectHyperlink.addHandler((href) -> {
+            if (!StringUtils.isEmpty(href)) {
                 BrowserUtil.browse(href);
             }
             return null;
         });
-        
+
         browser.getJBCefClient().addLoadHandler(new CefLoadHandlerAdapter() {
             // 变量 installedScript 用来标记 JavaScript 脚本是否已经被安装到 CEF 浏览器中
             private boolean installedScript=false;
             @Override
             public void onLoadingStateChange(CefBrowser browser, boolean isLoading, boolean canGoBack, boolean canGoForward) {
                 // 检查脚本是否已安装，如果没有则调用 setUpJavaScriptMessageBus 方法
-                if(!installedScript) {
-                    installedScript = setUpJavaScriptMessageBus(browser, myJSQueryOpenInBrowser);
-                }
+                installedScript = setUpJavaScriptMessageBus(browser, myJSQueryOpenInBrowser);
                 // 如果浏览器不再加载，则设置 JavaScript 消息总线重定向超链接并设置样式
                 if(!isLoading) {// 浏览器加载完成
                     setUpJavaScriptMessageBusRedirectHyperlink(browser, myJSQueryOpenInBrowserRedirectHyperlink);
@@ -132,13 +133,54 @@ public class ChatWebView implements Disposable {
                 }
             }
         }, browser.getCefBrowser());
-        
-        
+
+
         browser.createImmediately();
         return browser;
     }
 
-    
+    public void switchUrl(String newUrl) {
+        if (webView != null) {
+            logger.info("Switching ChatWebView to URL: %s".formatted(newUrl));
+            // 安全释放旧的 JSQuery，避免 disposed 错误
+            if (myJSQueryOpenInBrowser != null && !myJSQueryOpenInBrowser.isDisposed()) {
+                myJSQueryOpenInBrowser.dispose();
+            }
+            if (myJSQueryOpenInBrowserRedirectHyperlink != null && !myJSQueryOpenInBrowserRedirectHyperlink.isDisposed()) {
+                myJSQueryOpenInBrowserRedirectHyperlink.dispose();
+            }
+            // 重建 JSQuery，挂接到当前 webView
+            myJSQueryOpenInBrowser = JBCefJSQuery.create((JBCefBrowserBase) webView);
+            myJSQueryOpenInBrowser.addHandler((msg) -> {
+                logger.info("===>client message:" + msg);
+                ClientMessage clientMessage;
+                try {
+                    clientMessage = JsonUtils.convert2Object(msg, ClientMessage.class);
+                } catch (JsonProcessingException e) {
+                    throw new RuntimeException(e);
+                }
+                if (clientMessage != null) {
+                    fromChatHandler.accept(clientMessage);
+                }
+                return null;
+            });
+
+            myJSQueryOpenInBrowserRedirectHyperlink = JBCefJSQuery.create((JBCefBrowserBase) webView);
+            myJSQueryOpenInBrowserRedirectHyperlink.addHandler((href) -> {
+                if (!StringUtils.isEmpty(href)) {
+                    BrowserUtil.browse(href);
+                }
+                return null;
+            });
+
+            webView.loadURL(newUrl);
+        } else {
+            logger.warn("ChatWebView not initialized, cannot switch URL.");
+        }
+    }
+
+
+
     // 注册 JavaScript 脚本到消息总线
     private boolean setUpJavaScriptMessageBus(CefBrowser browser, JBCefJSQuery myJSQueryOpenInBrowser) {
         String script = String.format(
@@ -174,7 +216,7 @@ public class ChatWebView implements Disposable {
             browser.executeJavaScript(script, browser.getURL(), 0);
         }
     }
-    
+
     // 设置页面样式
     public void setStyle() {
         boolean isDarkMode = UIUtil.isUnderDarcula();
@@ -203,8 +245,8 @@ public class ChatWebView implements Disposable {
         String script = "window.postMessage(%s, \"*\");".formatted(message);
         webView.getCefBrowser().executeJavaScript(script, webView.getCefBrowser().getURL(), 0);
     }
-    
-    
+
+
     public JComponent getComponent() {
         return webView.getComponent();
     }
@@ -212,7 +254,13 @@ public class ChatWebView implements Disposable {
 
     @Override
     public void dispose() {
-        if (webView!=null){
+        if (myJSQueryOpenInBrowser != null && !myJSQueryOpenInBrowser.isDisposed()) {
+            myJSQueryOpenInBrowser.dispose();
+        }
+        if (myJSQueryOpenInBrowserRedirectHyperlink != null && !myJSQueryOpenInBrowserRedirectHyperlink.isDisposed()) {
+            myJSQueryOpenInBrowserRedirectHyperlink.dispose();
+        }
+        if (webView != null && !webView.isDisposed()) {
             webView.dispose();
         }
     }
